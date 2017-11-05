@@ -7,11 +7,11 @@ def main(args):
 	"""
 	Constantes útiles
 	"""
-	S_articulos=["el","la","los","las","un","uno","una","unos","unas","lo","al","del"]
-	S_adj_posesivos_1=["mi","mis","nuestro","nuestros","nuestra","nuestras","tu","tus","vuestro","vuestros","vuestra","vuestras","su","sus"]
-	S_adj_posesivos_1=["mi","mis","nuestro","nuestros","nuestra","nuestras"]
-	verbo_estar=re.compile(r"\best(oy|ás|á|amos|áis|án|aba|abas|aba|ábamos|abais|aban|uve|uviste|uvo|uvimos|uvisteis|uvieron|aré|arás|ará|aremos|aréis|arán|aría|arías|aríamos|arían|é|és|emos|éis|én|uviera|uvieras|uviéramos|uvierais|uvieran|uviese|uvieses|uviese|uviésemos|uvieseis|uviesen|uviere|uvieres|uviere|uviéremos|uviereis|uvieren)\b")
-	verbo_estar_perfecto=re.compile(r"\b(he|has|ha|hemos|habéis|han|había|habías|había|habíamos|habíais|habían|hube|hubiste|hubo|hubimos|hubisteis|hubieron|habré|habrás|habrá|habremos|habréis|habrán|habría|habrías|habríamos|habríais|habrían|haya|hayas|hayamos|hayáis|hayan|hubiera|hubieras|hubiéramos|hubierais|hubieran|hubiese|hubieses|hubiésemos|hubieseis|hubiesen|hubiere|hubieres|hubiéremos|hubiereis|hubieren)\bestado\b")
+	articulos=r"\b(el|la|los|las|un|uno|una|unos|unas|lo|al|del)\b"
+	adj_posesivos_1=r"\b(mi|mis|nuestro|nuestros|nuestra|nuestras|tu|tus|vuestro|vuestros|vuestra|vuestras|su|sus)\b"
+	adj_posesivos_1=r"\b(mi|mis|nuestro|nuestros|nuestra|nuestras)\b"
+	verbo_estar=r"\best(oy|ás|á|amos|áis|án|aba|abas|aba|ábamos|abais|aban|uve|uviste|uvo|uvimos|uvisteis|uvieron|aré|arás|ará|aremos|aréis|arán|aría|arías|aríamos|arían|é|és|emos|éis|én|uviera|uvieras|uviéramos|uvierais|uvieran|uviese|uvieses|uviese|uviésemos|uvieseis|uviesen|uviere|uvieres|uviere|uviéremos|uviereis|uvieren)\b"
+	verbo_estar_perfecto=r"\b(he|has|ha|hemos|habéis|han|había|habías|había|habíamos|habíais|habían|hube|hubiste|hubo|hubimos|hubisteis|hubieron|habré|habrás|habrá|habremos|habréis|habrán|habría|habrías|habríamos|habríais|habrían|haya|hayas|hayamos|hayáis|hayan|hubiera|hubieras|hubiéramos|hubierais|hubieran|hubiese|hubieses|hubiésemos|hubieseis|hubiesen|hubiere|hubieres|hubiéremos|hubiereis|hubieren)\bestado\b"
 	#~ verbo_andar
 	#~ verbo_ir
 	#~ verbo_viajar
@@ -30,8 +30,8 @@ def main(args):
 		y quitar las de este bloque, porque estas modifican el texto original
 		y es preferible no hacer eso al final
 	"""
-	expresion_derecha=re.compile(r"([^\w\s][^A-Z\d])")		# La expresión está separada en dos partes, una para cada lado de los signos de puntuación
-	expresion_izquierda=re.compile(r"([^A-Z\d][^\w\s])")	# la primera para el lado derecho, y esta para el lado izquierdo
+	expresion_derecha=re.compile(r"([^\w\s][^A-ZÁÉÍÓÚÑ\d])")		# La expresión está separada en dos partes, una para cada lado de los signos de puntuación
+	expresion_izquierda=re.compile(r"([^A-ZÁÉÍÓÚÑ\d][^\w\s])")	# la primera para el lado derecho, y esta para el lado izquierdo
 	s_texto=expresion_derecha.sub(r" \1",s_texto_original)	# se reemplaza, según el lado, por espacio
 	s_texto=expresion_izquierda.sub(r"\1 ",s_texto)			# para que todo lo que no está entre mayúsculas o números se separe entre espacios y sea más fácil de tratar
 	s_texto=expresion_derecha.sub(r" \1",s_texto)			# esto se hace dos veces, por si el segundo afectó el texto de modo que se limpie por completo.
@@ -40,7 +40,7 @@ def main(args):
 	"""
 	Aquí comienzan los patrones de verdad
 	"""
-	expresion_en=re.compile(r"\ben\b[\w\s]*")
+	expresion_en=re.compile(r"\ben\b("+articulos+"|"+"(\b[A-ZÁÉÍÓÚÑ]\w\b)+"+")")	# AUN NO PRUEBO ESTO
 	resultados_en=expresion_en.finditer(s_texto)
 	for resultado in resultados_en:
 		print(resultado.group(0))
