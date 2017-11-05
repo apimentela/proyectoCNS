@@ -5,6 +5,17 @@ import re
 
 def main(args):
 	"""
+	Constantes útiles
+	"""
+	S_articulos=["el","la","los","las","un","uno","una","unos","unas","lo","al","del"]
+	S_adj_posesivos_1=["mi","mis","nuestro","nuestros","nuestra","nuestras","tu","tus","vuestro","vuestros","vuestra","vuestras","su","sus"]
+	S_adj_posesivos_1=["mi","mis","nuestro","nuestros","nuestra","nuestras"]
+	verbo_estar=re.compile(r"\best(oy|ás|á|amos|áis|án|aba|abas|aba|ábamos|abais|aban|uve|uviste|uvo|uvimos|uvisteis|uvieron|aré|arás|ará|aremos|aréis|arán|aría|arías|aríamos|arían|é|és|emos|éis|én|uviera|uvieras|uviéramos|uvierais|uvieran|uviese|uvieses|uviese|uviésemos|uvieseis|uviesen|uviere|uvieres|uviere|uviéremos|uviereis|uvieren)\b")
+	verbo_estar_perfecto=re.compile(r"\b(he|has|ha|hemos|habéis|han|había|habías|había|habíamos|habíais|habían|hube|hubiste|hubo|hubimos|hubisteis|hubieron|habré|habrás|habrá|habremos|habréis|habrán|habría|habrías|habríamos|habríais|habrían|haya|hayas|hayamos|hayáis|hayan|hubiera|hubieras|hubiéramos|hubierais|hubieran|hubiese|hubieses|hubiésemos|hubieseis|hubiesen|hubiere|hubieres|hubiéremos|hubiereis|hubieren)\bestado\b")
+	#~ verbo_andar
+	#~ verbo_ir
+	#~ verbo_viajar
+	"""
 	Esta sección del código simplemente lee el texto
 	"""
 	s_nombre_archivo=args[1]
