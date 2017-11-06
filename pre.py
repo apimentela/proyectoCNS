@@ -21,7 +21,7 @@ def main(args):
 	s_nombre_archivo=args[1]
 	with open(s_nombre_archivo,"r") as archivo:
 		s_texto_original=archivo.read()
-	
+
 	"""
 	Aquí pongo unas cuantas expresiones regulares para quitar símbolos que estén separando:
 		siglas, números, direcciones web o cualquier otra cosa,
@@ -40,7 +40,7 @@ def main(args):
 	"""
 	Aquí comienzan los patrones de verdad
 	"""
-	expresion_en=re.compile(r"\ben\b("+articulos+"|"+"(\b[A-ZÁÉÍÓÚÑ]\w\b)+"+")")	# AUN NO PRUEBO ESTO
+	expresion_en=re.compile(r"\ben\b "+ articulos +"+([a-zA-ZáÁéÉíÍoÓÚuÑñ ]+){2}")	# Encuentra: en artículo palabra1 palabra2
 	resultados_en=expresion_en.finditer(s_texto)
 	for resultado in resultados_en:
 		print(resultado.group(0))
