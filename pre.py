@@ -7,7 +7,7 @@ def main(args):
 	"""
 	Constantes útiles
 	"""
-	articulos=r"\b(el|la|los|las|un|uno|una|unos|unas|lo|al|del)\b"
+	articulos=r"(el|la|los|las|un|uno|una|unos|unas|lo|al|del)"
 	adj_posesivos_1=r"\b(mi|mis|nuestro|nuestros|nuestra|nuestras|tu|tus|vuestro|vuestros|vuestra|vuestras|su|sus)\b"
 	adj_posesivos_1=r"\b(mi|mis|nuestro|nuestros|nuestra|nuestras)\b"
 	verbo_estar=r"\best(oy|ás|á|amos|áis|án|aba|abas|aba|ábamos|abais|aban|uve|uviste|uvo|uvimos|uvisteis|uvieron|aré|arás|ará|aremos|aréis|arán|aría|arías|aríamos|arían|é|és|emos|éis|én|uviera|uvieras|uviéramos|uvierais|uvieran|uviese|uvieses|uviese|uviésemos|uvieseis|uviesen|uviere|uvieres|uviere|uviéremos|uviereis|uvieren)\b"
@@ -19,7 +19,7 @@ def main(args):
 	Esta sección del código simplemente lee el texto
 	"""
 	s_nombre_archivo=args[1]
-	with open(s_nombre_archivo,"r") as archivo:
+	with open(s_nombre_archivo,"r",encoding="utf-8") as archivo:
 		s_texto_original=archivo.read()
 
 	"""
