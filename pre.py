@@ -61,6 +61,8 @@ def main(args):
 	Patrón para placas.
 	"""
 	
+	expresion_placas = re.compile(r"[A-HJ-NPR-Z]{0,3}[0-9]{2,3}([0-9]{2,3}|[A-HJ-NPR-Z]{1,3})")
+		
 	"""
 	Patrón para correo electrónico
 	"""
