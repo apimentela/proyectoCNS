@@ -57,7 +57,26 @@ def main(args):
 	Patrones para lugares encontrados con "entre"
 	"""
 	
+	"""
+	Patrón para placas.
+	"""
 	
+	"""
+	Patrón para correo electrónico
+	"""
+	
+	"""
+	Patrón de Direcciones IP
+	"""
+	
+	"""
+	Patrón de números telefónicos
+	"""
+	
+	"""
+	Patrón de sitios web
+	"""
+		
 	return 0
 	
 
