@@ -13,8 +13,8 @@ def main(args):
 	adj_posesivos_1=r"\b(mi|mis|nuestro|nuestros|nuestra|nuestras)\b"
 	verbo_estar=r"\best(oy|ás|á|amos|áis|án|aba|abas|aba|ábamos|abais|aban|uve|uviste|uvo|uvimos|uvisteis|uvieron|aré|arás|ará|aremos|aréis|arán|aría|arías|aríamos|arían|é|és|emos|éis|én|uviera|uvieras|uviéramos|uvierais|uvieran|uviese|uvieses|uviese|uviésemos|uvieseis|uviesen|uviere|uvieres|uviere|uviéremos|uviereis|uvieren)\b"
 	verbo_estar_perfecto=r"\b(he|has|ha|hemos|habéis|han|había|habías|había|habíamos|habíais|habían|hube|hubiste|hubo|hubimos|hubisteis|hubieron|habré|habrás|habrá|habremos|habréis|habrán|habría|habrías|habríamos|habríais|habrían|haya|hayas|hayamos|hayáis|hayan|hubiera|hubieras|hubiéramos|hubierais|hubieran|hubiese|hubieses|hubiésemos|hubieseis|hubiesen|hubiere|hubieres|hubiéremos|hubiereis|hubieren)\bestado\b"
-	#~ verbo_andar
-	#~ verbo_ir
+	verbo_andar=r"\band(o|as|a|amos|áis|an|aba|abas|aba|ábamos|abais|aban|uve|uviste|uvo|uvimos|uvisteis|uvieron|aré|arás|ará|aremos|aréis|arán|aría|arías|aríamos|arían|e|es|emos|éis|en|uviera|uvieras|uviéramos|uvierais|uvieran|uviese|uvieses|uviese|uviésemos|uvieseis|uviesen|uviere|uvieres|uviere|uviéremos|uviereis|uvieren)\b"
+	verbo_ir=r"\bv(oy|as|a|amos|ais|an|aya|ayas|ayamos|ayáis|ayan)|\b(i|í)(ba|bas|bamos|bais|ban|ré|rás|rá|remos|réis|rán|ría|rías|ríamos|ríais|rían)|\bfu(i|iste|e|imos|isteis|eron|era|eras|éramos|erais|eran|ese|eses|ésemos|eseis|esen|ere|eres|éremos|ereis|eren)\b"
 	#~ verbo_viajar
 	"""
 	Esta sección del código simplemente lee el texto
@@ -23,34 +23,43 @@ def main(args):
 	with open(s_nombre_archivo,"r",encoding="utf-8") as archivo:
 		s_texto_original=archivo.read()
 
-	"""
-	Aquí pongo unas cuantas expresiones regulares para quitar símbolos que estén separando:
-		siglas, números, direcciones web o cualquier otra cosa,
-		para que sea más fácil hacer pruebas sin tener que tomar eso en cuenta,
-		esa medida es MOMENTANEA, más adelante hay que trabajar en las expresiones con todo detalle
-		y quitar las de este bloque, porque estas modifican el texto original
-		y es preferible no hacer eso al final
-	"""
-	expresion_derecha=re.compile(r"([^\w\s][^A-ZÁÉÍÓÚÑ\d])")		# La expresión está separada en dos partes, una para cada lado de los signos de puntuación
-	expresion_izquierda=re.compile(r"([^A-ZÁÉÍÓÚÑ\d][^\w\s])")		# la primera para el lado derecho, y esta para el lado izquierdo
-	s_texto=expresion_derecha.sub(r" \1",s_texto_original)			# se reemplaza, según el lado, por espacio
-	s_texto=expresion_izquierda.sub(r"\1 ",s_texto)					# para que todo lo que no está entre mayúsculas o números se separe entre espacios y sea más fácil de tratar
-	s_texto=expresion_derecha.sub(r" \1",s_texto)					# esto se hace dos veces, por si el segundo afectó el texto de modo que se limpie por completo.
-	expresion_media=re.compile(r"(?<! )[^\w\s](?! )")				# esta expresión buscará todos los símbolos que no fueron separados con espacios
-	s_texto=expresion_media.sub("",s_texto)							# para eliminarlos y que el texto quede como si las entidades que separaban fueran una sola.
+	#~ """
+	#~ Aquí pongo unas cuantas expresiones regulares para quitar símbolos que estén separando:
+		#~ siglas, números, direcciones web o cualquier otra cosa,
+		#~ para que sea más fácil hacer pruebas sin tener que tomar eso en cuenta,
+		#~ esa medida es MOMENTANEA, más adelante hay que trabajar en las expresiones con todo detalle
+		#~ y quitar las de este bloque, porque estas modifican el texto original
+		#~ y es preferible no hacer eso al final
+	#~ """
+	#~ expresion_derecha=re.compile(r"([^\w\s][^A-ZÁÉÍÓÚÑ\d])")			# La expresión está separada en dos partes, una para cada lado de los signos de puntuación
+	#~ expresion_izquierda=re.compile(r"([^A-ZÁÉÍÓÚÑ\d][^\w\s])")		# la primera para el lado derecho, y esta para el lado izquierdo
+	#~ s_texto=expresion_derecha.sub(r" \1",s_texto_original)			# se reemplaza, según el lado, por espacio
+	#~ s_texto=expresion_izquierda.sub(r"\1 ",s_texto)					# para que todo lo que no está entre mayúsculas o números se separe entre espacios y sea más fácil de tratar
+	#~ s_texto=expresion_derecha.sub(r" \1",s_texto)					# esto se hace dos veces, por si el segundo afectó el texto de modo que se limpie por completo.
+	#~ expresion_media=re.compile(r"(?<! )[^\w\s](?! )")				# esta expresión buscará todos los símbolos que no fueron separados con espacios
+	#~ s_texto=expresion_media.sub("",s_texto)							# para eliminarlos y que el texto quede como si las entidades que separaban fueran una sola.
+	s_texto=s_texto_original
 	"""
 	Aquí comienzan los patrones de verdad
 	"""
 	"""
 	Patrones para lugares encontrados con "en"
 	"""
-	en_articulos=articulos_en+r"( +[^A-ZÁÉÍÓÚÑ\W]+ +)+?"
-	en_mayusculas=r"([A-ZÁÉÍÓÚÑ][^A-ZÁÉÍÓÚÑ\W]+ +)+"
-	expresion_en=re.compile(r"(?<=\ben )+("+en_articulos+en_mayusculas+"|"+en_mayusculas+")")
+	en_articulos=articulos_en+r"( +[^A-ZÁÉÍÓÚÑ\W]+ +)*?"	# Se muestran dos patrones principalmente, uno comienza con artículos
+	en_mayusculas=r"(([A-ZÁÉÍÓÚÑ]+ +)+|([A-ZÁÉÍÓÚÑ][^A-ZÁÉÍÓÚÑ\W]+ +)+)"		# y otro con mayúsculas
+	expresion_en=re.compile(r"(?<=\ben )+("+en_articulos+en_mayusculas+"|"+en_mayusculas+")")	# esta expresión encuentra todo lo que comienza con en, y le sigue un artículo con alguna mayúscula en algún punto, o puras mayúsculas. A los artículos, se les quitan los "un" y derivados, no parecen dar ningún buen resultado
 	resultados_en=expresion_en.finditer(s_texto)
 	for resultado in resultados_en:
+		if " que " in resultado.group(0): continue
+		if len(resultado.group(0).split()) > 6 :continue
 		print(resultado.group(0))
+	"""
+	Patrones para lugares encontrados con "entre"
+	"""
+	
+	
 	return 0
+	
 
 if __name__ == '__main__':
 	"""
