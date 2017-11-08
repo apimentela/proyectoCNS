@@ -78,7 +78,9 @@ def main(args):
 	placas_3=r"[A-HJ-NPR-Z]-?[0-9]{2,3}-?[A-HJ-NPR-Z]{3}"
 	placas_4=r"[0-9]{3}-?[A-HJ-NPR-Z]{3}"
 	placas_5=r"[A-HJ-NPR-Z]{2}-?[0-9]{2}-?[0-9]{3}"
-	expresion_placas = re.compile(r"("+placas_1+"|"+placas_2+"|"+placas_3+"|"+placas_4+"|"+placas_5+")")
+	placas_6=r"[0-9]-?[A-HJ-NPR-Z]-?[0-9]{2}-?[A-HJ-NPR-Z]{2}"
+	placas_7=r"[0-9]-?[A-HJ-NPR-Z]-?[0-9]-?[A-HJ-NPR-Z]{3}"
+	expresion_placas = re.compile(r"("+placas_1+"|"+placas_2+"|"+placas_3+"|"+placas_4+"|"+placas_5+"|"+placas_6+"|"+placas_7+")")
 	resultados_placas=expresion_placas.finditer(s_texto)
 	#~ for resultado in resultados_placas:
 		#~ print(resultado.group(0))
