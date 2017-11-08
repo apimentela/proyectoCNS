@@ -12,10 +12,10 @@ def main(args):
 	adj_posesivos=r"\b(mi|mis|nuestro|nuestros|nuestra|nuestras|tu|tus|vuestro|vuestros|vuestra|vuestras|su|sus)\b"
 	adj_posesivos_1=r"\b(mi|mis|nuestro|nuestros|nuestra|nuestras)\b"
 	verbo_estar=r"\best(oy|ás|á|amos|áis|án|aba|abas|aba|ábamos|abais|aban|uve|uviste|uvo|uvimos|uvisteis|uvieron|aré|arás|ará|aremos|aréis|arán|aría|arías|aríamos|arían|é|és|emos|éis|én|uviera|uvieras|uviéramos|uvierais|uvieran|uviese|uvieses|uviese|uviésemos|uvieseis|uviesen|uviere|uvieres|uviere|uviéremos|uviereis|uvieren)\b"
-	verbo_estar_perfecto=r"\b(he|has|ha|hemos|habéis|han|había|habías|había|habíamos|habíais|habían|hube|hubiste|hubo|hubimos|hubisteis|hubieron|habré|habrás|habrá|habremos|habréis|habrán|habría|habrías|habríamos|habríais|habrían|haya|hayas|hayamos|hayáis|hayan|hubiera|hubieras|hubiéramos|hubierais|hubieran|hubiese|hubieses|hubiésemos|hubieseis|hubiesen|hubiere|hubieres|hubiéremos|hubiereis|hubieren)\bestado\b"
+	verbo_estar_perfecto=r"\b(he|has|ha|hemos|habéis|han|había|habías|había|habíamos|habíais|habían|hube|hubiste|hubo|hubimos|hubisteis|hubieron|habré|habrás|habrá|habremos|habréis|habrán|habría|habrías|habríamos|habríais|habrían|haya|hayas|hayamos|hayáis|hayan|hubiera|hubieras|hubiéramos|hubierais|hubieran|hubiese|hubieses|hubiésemos|hubieseis|hubiesen|hubiere|hubieres|hubiéremos|hubiereis|hubieren) +estado\b"
 	verbo_andar=r"\band(o|as|a|amos|áis|an|aba|abas|aba|ábamos|abais|aban|uve|uviste|uvo|uvimos|uvisteis|uvieron|aré|arás|ará|aremos|aréis|arán|aría|arías|aríamos|arían|e|es|emos|éis|en|uviera|uvieras|uviéramos|uvierais|uvieran|uviese|uvieses|uviese|uviésemos|uvieseis|uviesen|uviere|uvieres|uviere|uviéremos|uviereis|uvieren)\b"
 	verbo_ir=r"\bv(oy|as|a|amos|ais|an|aya|ayas|ayamos|ayáis|ayan)|\b(i|í)(ba|bas|bamos|bais|ban|ré|rás|rá|remos|réis|rán|ría|rías|ríamos|ríais|rían)|\bfu(i|iste|e|imos|isteis|eron|era|eras|éramos|erais|eran|ese|eses|ésemos|eseis|esen|ere|eres|éremos|ereis|eren)\b"
-	#~ verbo_viajar
+	verbo_viajar=r"\bviaj(o|as|a|amos|áis|an|aba|abas|aba|ábamos|abais|aban|é|aste|ó|amos|asteis|aron|aré|arás|ará|aremos|aréis|arán|aría|arías|aríamos|arían|e|es|emos|éis|en|ara|aras|áramos|arais|aran|ase|ases|ásemos|aseis|asen|are|ares|áremos|areis|aren)\b"
 	"""
 	Esta sección del código simplemente lee el texto
 	"""
@@ -49,10 +49,10 @@ def main(args):
 	en_mayusculas=r"(([A-ZÁÉÍÓÚÑ]+ +)+|([A-ZÁÉÍÓÚÑ][^A-ZÁÉÍÓÚÑ\W]+ +)+)"		# y otro con mayúsculas
 	expresion_en=re.compile(r"(?<=\ben )+("+en_articulos+en_mayusculas+"|"+en_mayusculas+")")	# esta expresión encuentra todo lo que comienza con en, y le sigue un artículo con alguna mayúscula en algún punto, o puras mayúsculas. A los artículos, se les quitan los "un" y derivados, no parecen dar ningún buen resultado
 	resultados_en=expresion_en.finditer(s_texto)
-	for resultado in resultados_en:
-		if " que " in resultado.group(0): continue
-		if len(resultado.group(0).split()) > 6 :continue
-		print(resultado.group(0))
+	#~ for resultado in resultados_en:
+		#~ if " que " in resultado.group(0): continue
+		#~ if len(resultado.group(0).split()) > 6 :continue
+		#~ print(resultado.group(0))
 	"""
 	Patrones para lugares encontrados con "entre"
 	"""
@@ -60,9 +60,16 @@ def main(args):
 	"""
 	Patrón para placas.
 	"""
+	placas_1=r"[A-HJ-NPR-Z]{3}-?[0-9]{2}-?[0-9]{2}"
+	placas_2=r"[A-HJ-NPR-Z]{3}-?[0-9]{3}-?[A-HJ-NPR-Z]"
+	placas_3=r"[A-HJ-NPR-Z]-?[0-9]{2,3}-?[A-HJ-NPR-Z]{3}"
+	placas_4=r"[0-9]{3}-?[A-HJ-NPR-Z]{3}"
+	placas_5=r"[A-HJ-NPR-Z]{2}-?[0-9]{2}-?[0-9]{3}"
+	expresion_placas = re.compile(r"("+placas_1+"|"+placas_2+"|"+placas_3+"|"+placas_4+"|"+placas_5+")")
+	resultados_placas=expresion_placas.finditer(s_texto)
+	for resultado in resultados_placas:
+		print(resultado.group(0))
 	
-	expresion_placas = re.compile(r"[A-HJ-NPR-Z]{0,3}[0-9]{2,3}([0-9]{2,3}|[A-HJ-NPR-Z]{1,3})")
-		
 	"""
 	Patrón para correo electrónico
 	"""
