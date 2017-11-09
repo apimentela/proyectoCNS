@@ -49,7 +49,6 @@ def main(args):
 	"""
 	Patrones para lugares encontrados con "en"
 	"""
-	# TODO : podríamos, como dicen, filtrar: Messenger, Twitter, Facebook, Internet, Instagram, Google, Skype, Tumblr, Pocket, Telegram, Pinterest, Reddit, Linkedin, Youtube, Síguenos, Inicio
 	# TODO : al parecer, aún se puede filtrar mucho si se fijan en las palabras funcionales en los extremos de las supuestas ubicaciones, además, hay que buscar cosas parecidas a "la cual, el cual, el que..." que tampoco dan buenos resultados, y se necesita también una lista de idiomas, por cosas como "en Español..." y cosas como "en HD, en PDF, en la televisión,...", y categorías de periódicos. Además de colocaciones como "en buscda de...."
 	# TODO : verificar expresiones de tiempo como "en el siglo.."
 	# TODO : verificar tambián partes del cuerpo "en el pecho.."
