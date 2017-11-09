@@ -49,8 +49,16 @@ def main(args):
 	"""
 	Patrones para lugares encontrados con "en"
 	"""
+	# TODO : podríamos, como dicen, filtrar: Messenger, Twitter, Facebook, Internet, Instagram, Google, Skype, Tumblr, Pocket, Telegram, Pinterest, Reddit, Linkedin, Youtube, Síguenos, Inicio
+	# TODO : al parecer, aún se puede filtrar mucho si se fijan en las palabras funcionales en los extremos de las supuestas ubicaciones, además, hay que buscar cosas parecidas a "la cual, el cual, el que..." que tampoco dan buenos resultados, y se necesita también una lista de idiomas, por cosas como "en Español..." y cosas como "en HD, en PDF, en la televisión,...", y categorías de periódicos. Además de colocaciones como "en buscda de...."
+	# TODO : verificar expresiones de tiempo como "en el siglo.."
+	# TODO : verificar tambián partes del cuerpo "en el pecho.."
+	# TODO : entidades con mayúsculas pueden tener palabras con minúsculas en medio, aunque no he encontrado que haya más de dos, revisar expresión regular.
+	# TODO : hay que analizar lo de las palabras funcional en los extremos de las entidades, muchas veces solo marcan el final, no que no lo sea. (quitar "en" de esas palabras y agregar "leer", y quizá se tenga que revisar verbos en general, palabras como "te" parecen ser terminantes)
+	# TODO : varias entidades que van en mayúsculas y minúsculas si terminan o comienzan con UNA sigla en puras mayúsculas, revisar expresión regular. *revisar que no sea peor el resultado, hay siglas que son seguidas de mayúsculas pero no tienen nada que ver
+	# TODO : algunos lugares son seguidos de un lugar más general en paréntesis. (no son tan comúnes)
 	en_articulos=articulos_en+r"( +[^A-ZÁÉÍÓÚÑ\W]+ +)*?"	# Se muestran dos patrones principalmente, uno comienza con artículos
-	en_mayusculas=r"(([A-ZÁÉÍÓÚÑ]+ +)+|([A-ZÁÉÍÓÚÑ][^A-ZÁÉÍÓÚÑ\W]+ +)+)"		# y otro con mayúsculas
+	en_mayusculas=r"(([A-ZÁÉÍÓÚÑ]+[ \b]+)+|([A-ZÁÉÍÓÚÑ][^A-ZÁÉÍÓÚÑ\W]+[ \b]+)+)"		# y otro con mayúsculas
 	expresion_en=re.compile(r"(?<=\b[Ee]n )+("+en_articulos+en_mayusculas+"|"+en_mayusculas+")")	# esta expresión encuentra todo lo que comienza con en, y le sigue un artículo con alguna mayúscula en algún punto, o puras mayúsculas. A los artículos, se les quitan los "un" y derivados, no parecen dar ningún buen resultado
 	s_texto_nuevo=expresion_en.sub(ne00u00,s_texto)
 	print(s_texto_nuevo)
@@ -83,7 +91,7 @@ def main(args):
 	placas_5=r"[A-HJ-NPR-Z]{2}-?[0-9]{2}-?[0-9]{3}"
 	placas_6=r"[0-9]-?[A-HJ-NPR-Z]-?[0-9]{2}-?[A-HJ-NPR-Z]{2}"
 	placas_7=r"[0-9]-?[A-HJ-NPR-Z]-?[0-9]-?[A-HJ-NPR-Z]{3}"
-	expresion_placas = re.compile(r"("+placas_1+"|"+placas_2+"|"+placas_3+"|"+placas_4+"|"+placas_5+"|"+placas_6+"|"+placas_7+")")
+	expresion_placas = re.compile(r"\b("+placas_1+"|"+placas_2+"|"+placas_3+"|"+placas_4+"|"+placas_5+"|"+placas_6+"|"+placas_7+")\b")
 	#~ resultados_placas=expresion_placas.finditer(s_texto)
 	#~ for resultado in resultados_placas:
 		#~ print(resultado.group(0))
@@ -109,7 +117,7 @@ def main(args):
 	"""
 	Patrón de números telefónicos
 	"""
-	expresion_telefono = re.compile(r"(\d{3}[-\.\s]??\d{3}[-\.\s]??\d{4}|\(\d{3}\)\s*\d{3}[-\.\s]??\d{4}|\d{3}[-\.\s]??\d{4})")
+	expresion_telefono = re.compile(r"\b(\d{3}[-\.\s]??\d{3}[-\.\s]??\d{4}|\(\d{3}\)\s*\d{3}[-\.\s]??\d{4}|\d{3}[-\.\s]??\d{4})\b")
 	#~ resultados_telefono = expresion_telefono.finditer(s_texto)
 	#~ for resultado in resultados_telefono:
 		#~ print(resultado.group(0))
