@@ -10,7 +10,7 @@ def main(args):
     la línea así como la daría freeling.
     '''
     # TODO: Tengo que agregar todavía todas las etiquetas
-    S_etiquetas = ["NE00C00","NE00T00","NE00I00",]
+    S_etiquetas = ["NE00C00","NE00P00","NE00O00","NE00T00","NE00I00","NE00E00","NE00M00","NE00A00","NE00L00","NE00S00","NE00U00"]
     S_texto_etiquetado_token_tag = [] #esta será una lista, donde cada elemento tiene la forma palabra/tag
     s_nombre_archivo = args[1]
     with open(s_nombre_archivo,"r",encoding="utf-8") as entrada:
