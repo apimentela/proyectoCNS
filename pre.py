@@ -60,8 +60,8 @@ def main(args):
 	en_articulos=articulos_en+r"( +[^A-ZÁÉÍÓÚÑ\W]+ +)*?"	# Se muestran dos patrones principalmente, uno comienza con artículos
 	en_mayusculas=r"(([A-ZÁÉÍÓÚÑ]+[ \b]+)+|([A-ZÁÉÍÓÚÑ][^A-ZÁÉÍÓÚÑ\W]+[ \b]+)+)"		# y otro con mayúsculas
 	expresion_en=re.compile(r"(?<=\b[Ee]n )+("+en_articulos+en_mayusculas+"|"+en_mayusculas+")")	# esta expresión encuentra todo lo que comienza con en, y le sigue un artículo con alguna mayúscula en algún punto, o puras mayúsculas. A los artículos, se les quitan los "un" y derivados, no parecen dar ningún buen resultado
-	s_texto_nuevo=expresion_en.sub(ne00u00,s_texto)
-	print(s_texto_nuevo)
+	s_texto_etiquetado=expresion_en.sub(ne00u00,s_texto)
+	print(s_texto_etiquetado)
 	#~ resultados_en=expresion_en.finditer(s_texto)
 	#~ for resultado in resultados_en:
 		#~ if " que " in resultado.group(0): continue
