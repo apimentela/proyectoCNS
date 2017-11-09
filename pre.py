@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import re
+import pickle
 from replaces import *
 
 def main(args):
@@ -106,6 +107,8 @@ def main(args):
 	lista_correos=[]
 	for resultado in resultados_correo:
 		lista_correos.append(resultado.group(0))
+	with open("lista_correos.pkl","wb") as f:
+		pickle.dump(lista_correos,f)
 	s_texto=expresion_correo.sub(ne00e00,s_texto)
 	"""
 	Patrón de Direcciones IP
