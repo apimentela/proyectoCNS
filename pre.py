@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import re
+from replaces import *
 
 def main(args):
 	"""
@@ -51,7 +52,9 @@ def main(args):
 	en_articulos=articulos_en+r"( +[^A-ZÁÉÍÓÚÑ\W]+ +)*?"	# Se muestran dos patrones principalmente, uno comienza con artículos
 	en_mayusculas=r"(([A-ZÁÉÍÓÚÑ]+ +)+|([A-ZÁÉÍÓÚÑ][^A-ZÁÉÍÓÚÑ\W]+ +)+)"		# y otro con mayúsculas
 	expresion_en=re.compile(r"(?<=\b[Ee]n )+("+en_articulos+en_mayusculas+"|"+en_mayusculas+")")	# esta expresión encuentra todo lo que comienza con en, y le sigue un artículo con alguna mayúscula en algún punto, o puras mayúsculas. A los artículos, se les quitan los "un" y derivados, no parecen dar ningún buen resultado
-	resultados_en=expresion_en.finditer(s_texto)
+	s_texto_nuevo=expresion_en.sub(ne00u00,s_texto)
+	print(s_texto_nuevo)
+	#~ resultados_en=expresion_en.finditer(s_texto)
 	#~ for resultado in resultados_en:
 		#~ if " que " in resultado.group(0): continue
 		#~ if len(resultado.group(0).split()) > 6 :continue
@@ -60,14 +63,14 @@ def main(args):
 	Patrones para lugares encontrados con "entre"
 	"""
 	expresion_entre=re.compile(r"("+verbo_estar+"|"+verbo_estar_perfecto+")"+" +entre +[\w ]+")
-	resultados_entre=expresion_entre.finditer(s_texto)
+	#~ resultados_entre=expresion_entre.finditer(s_texto)
 	#~ for resultado in resultados_entre:
 		#~ print(resultado.group(0))
 	"""
 	Patrones para lugares encontrados con "cerca/lejos"
 	"""
 	expresion_cerca_lejos=re.compile(r"("+verbo_estar+"|"+verbo_estar_perfecto+")"+" +(cerca|lejos) +de +[\w ]+")
-	resultados_cerca_lejos=expresion_cerca_lejos.finditer(s_texto)
+	#~ resultados_cerca_lejos=expresion_cerca_lejos.finditer(s_texto)
 	#~ for resultado in resultados_cerca_lejos:
 		#~ print(resultado.group(0))
 	"""
@@ -81,7 +84,7 @@ def main(args):
 	placas_6=r"[0-9]-?[A-HJ-NPR-Z]-?[0-9]{2}-?[A-HJ-NPR-Z]{2}"
 	placas_7=r"[0-9]-?[A-HJ-NPR-Z]-?[0-9]-?[A-HJ-NPR-Z]{3}"
 	expresion_placas = re.compile(r"("+placas_1+"|"+placas_2+"|"+placas_3+"|"+placas_4+"|"+placas_5+"|"+placas_6+"|"+placas_7+")")
-	resultados_placas=expresion_placas.finditer(s_texto)
+	#~ resultados_placas=expresion_placas.finditer(s_texto)
 	#~ for resultado in resultados_placas:
 		#~ print(resultado.group(0))
 
@@ -92,14 +95,14 @@ def main(args):
 	#https://stackoverflow.com/questions/201323/using-a-regular-expression-to-validate-an-email-address
 	#Me pareció una buena explicación. Tiene hasta el autómata con el que generaron la expresión.
 	expresion_correo = re.compile(r"(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|" + r'"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9]))\.){3}(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9])|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])')
-	resultados_correo=expresion_correo.finditer(s_texto)
+	#~ resultados_correo=expresion_correo.finditer(s_texto)
 	#~ for resultado in resultados_correo:
 		#~ print(resultado.group(0))
 	"""
 	Patrón de Direcciones IP
 	"""
 	expresion_IPv4 = re.compile(r"^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$", re.M)
-	resultados_IPv4 = expresion_IPv4.finditer(s_texto)
+	#~ resultados_IPv4 = expresion_IPv4.finditer(s_texto)
 	#~ for resultado in resultados_IPv4:
 			#~ print(resultado.group(0))
 
@@ -107,7 +110,7 @@ def main(args):
 	Patrón de números telefónicos
 	"""
 	expresion_telefono = re.compile(r"(\d{3}[-\.\s]??\d{3}[-\.\s]??\d{4}|\(\d{3}\)\s*\d{3}[-\.\s]??\d{4}|\d{3}[-\.\s]??\d{4})")
-	resultados_telefono = expresion_telefono.finditer(s_texto)
+	#~ resultados_telefono = expresion_telefono.finditer(s_texto)
 	#~ for resultado in resultados_telefono:
 		#~ print(resultado.group(0))
 
@@ -115,9 +118,9 @@ def main(args):
 	Patrón de sitios web
 	"""
 	expresion_url = re.compile(r"http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+")
-	resultados_url = expresion_url.finditer(s_texto)
-	for resultado in resultados_url:
-		print(resultado.group(0))
+	#~ resultados_url = expresion_url.finditer(s_texto)
+	#~ for resultado in resultados_url:
+		#~ print(resultado.group(0))
 
 	return 0
 
