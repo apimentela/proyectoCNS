@@ -102,10 +102,11 @@ def main(args):
 	#https://stackoverflow.com/questions/201323/using-a-regular-expression-to-validate-an-email-address
 	#Me pareció una buena explicación. Tiene hasta el autómata con el que generaron la expresión.
 	expresion_correo = re.compile(r"(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|" + r'"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9]))\.){3}(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9])|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])')
+	resultados_correo=expresion_correo.finditer(s_texto)
+	lista_correos=[]
+	for resultado in resultados_correo:
+		lista_correos.append(resultado.group(0))
 	s_texto=expresion_correo.sub(ne00e00,s_texto)
-	#~ resultados_correo=expresion_correo.finditer(s_texto)
-	#~ for resultado in resultados_correo:
-		#~ print(resultado.group(0))
 	"""
 	Patrón de Direcciones IP
 	"""

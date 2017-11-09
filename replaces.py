@@ -53,9 +53,7 @@ def ne00e00(matchobj):
 	for etiqueta in listaEtiquetas:
 		if etiqueta in matchobj.group(0):
 			return matchobj.group(0)
-	texto_encontrado = matchobj.group(0).strip()
-	texto_nuevo = texto_encontrado.replace(" ","_")
-	texto_nuevo = " "+"NE00E00_"+texto_nuevo+" "
+	texto_nuevo = " "+"NE00E00"+" "
 	return texto_nuevo
 	
 def ne00m00(matchobj):
