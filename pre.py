@@ -90,7 +90,7 @@ def main(args):
 	placas_6=r"[0-9]-?[A-HJ-NPR-Z]-?[0-9]{2}-?[A-HJ-NPR-Z]{2}"
 	placas_7=r"[0-9]-?[A-HJ-NPR-Z]-?[0-9]-?[A-HJ-NPR-Z]{3}"
 	expresion_placas = re.compile(r"\b("+placas_1+"|"+placas_2+"|"+placas_3+"|"+placas_4+"|"+placas_5+"|"+placas_6+"|"+placas_7+")\b")
-	s_texto=expresion_en.sub(ne00m00,s_texto)
+	s_texto=expresion_placas.sub(ne00m00,s_texto)
 	#~ resultados_placas=expresion_placas.finditer(s_texto)
 	#~ for resultado in resultados_placas:
 		#~ print(resultado.group(0))
@@ -102,7 +102,7 @@ def main(args):
 	#https://stackoverflow.com/questions/201323/using-a-regular-expression-to-validate-an-email-address
 	#Me pareció una buena explicación. Tiene hasta el autómata con el que generaron la expresión.
 	expresion_correo = re.compile(r"(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|" + r'"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9]))\.){3}(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9])|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])')
-	s_texto=expresion_en.sub(ne00e00,s_texto)
+	s_texto=expresion_correo.sub(ne00e00,s_texto)
 	#~ resultados_correo=expresion_correo.finditer(s_texto)
 	#~ for resultado in resultados_correo:
 		#~ print(resultado.group(0))
@@ -110,7 +110,7 @@ def main(args):
 	Patrón de Direcciones IP
 	"""
 	expresion_IPv4 = re.compile(r"^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$", re.M)
-	s_texto=expresion_en.sub(ne00i00,s_texto)
+	s_texto=expresion_IPv4.sub(ne00i00,s_texto)
 	#~ resultados_IPv4 = expresion_IPv4.finditer(s_texto)
 	#~ for resultado in resultados_IPv4:
 			#~ print(resultado.group(0))
@@ -119,7 +119,7 @@ def main(args):
 	Patrón de números telefónicos
 	"""
 	expresion_telefono = re.compile(r"\b(\d{3}[-\.\s]??\d{3}[-\.\s]??\d{4}|\(\d{3}\)\s*\d{3}[-\.\s]??\d{4}|\d{3}[-\.\s]??\d{4})\b")
-	s_texto=expresion_en.sub(ne00t00,s_texto)
+	s_texto=expresion_telefono.sub(ne00t00,s_texto)
 	#~ resultados_telefono = expresion_telefono.finditer(s_texto)
 	#~ for resultado in resultados_telefono:
 		#~ print(resultado.group(0))
@@ -128,7 +128,7 @@ def main(args):
 	Patrón de sitios web
 	"""
 	expresion_url = re.compile(r"http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+")
-	s_texto=expresion_en.sub(ne00l00,s_texto)
+	s_texto=expresion_url.sub(ne00l00,s_texto)
 	#~ resultados_url = expresion_url.finditer(s_texto)
 	#~ for resultado in resultados_url:
 		#~ print(resultado.group(0))
