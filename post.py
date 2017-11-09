@@ -3,7 +3,7 @@
 
 import re
 
-def main(args):
+def main(args,listaCorreos):
     '''
     recibe como argumento el archivo .flg que arrojó freeling
     Busca línea por línea a nuestra etiqueta, si la encuentra, reescribe
@@ -19,6 +19,11 @@ def main(args):
     for index, line in enumerate(S_texto_etiquetado_completo):
         line = line.strip()
         for etiqueta in S_etiquetas:
+            if etiqueta == "NE00E00" and etiqueta in line:
+                line = line.replace(etiqueta,listaCorreos.popleft())
+                line = line.replace(" Z ", " "+ etiqueta + " ")
+                S_texto_etiquetado_completo[index] = ""+line+"\n"
+
             if etiqueta in line:
                 line = line.replace(""+etiqueta+"_","")
                 line = line.replace(" Z "," " + etiqueta + " ")
