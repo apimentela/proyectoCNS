@@ -16,7 +16,7 @@ NE00M00 - Para matrículas
 
 NE00A00 - Para establecimientos
 
-NE00L00 - Para localidades
+NE00L00 - Para localidades (sitios web?)
 
 NE00S00 - Para servicios públicos
 
