@@ -98,16 +98,26 @@ def main(args):
 	"""
 	Patrón de Direcciones IP
 	"""
-
-	
+	expresion_IPv4 = re.compile(r"^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$", re.M)
+	resultados_IPv4 = expresion_IPv4.finditer(s_texto)
+	#~ for resultado in resultados_IPv4:
+		#~ 	print(resultado.group(0))
 
 	"""
 	Patrón de números telefónicos
 	"""
+	expresion_telefono = re.compile(r"(\d{3}[-\.\s]??\d{3}[-\.\s]??\d{4}|\(\d{3}\)\s*\d{3}[-\.\s]??\d{4}|\d{3}[-\.\s]??\d{4})")
+	resultados_telefono = expresion_telefono.finditer(s_texto)
+	#~ for resultado in resultados_telefono:
+		#~ print(resultado.group(0))
 
 	"""
 	Patrón de sitios web
 	"""
+	expresion_url = re.compile(r"http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+")
+	resultados_url = expresion_url.finditer(s_texto)
+	#~ for resultado in resultados_url:
+		#~ print(resultado.group(0))
 
 	return 0
 
