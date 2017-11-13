@@ -138,8 +138,13 @@ def main(args):
 		#~ print(resultado.group(0))
 
 	"""
-	Slaida
+	Salida
 	"""
+
+	salida = open("resultadoPre.flg","a+",encoding="utf-8")
+	salida.write(s_texto)
+	salida.close()
+
 	print(s_texto)
 	return 0
 

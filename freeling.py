@@ -15,7 +15,7 @@ def main(args):
     s_nombre_archivo = args[1]
     with open(s_nombre_archivo,"r",encoding="utf-8") as entrada:
         #no lo metí en otro with open porque daba error. Así que lo dejo así.
-        salida = open("file_out.txt", "w")
+        salida = open("resultadoFreeling.flg", "a+",encoding="utf-8")
         subprocess.call("docker run -i --rm freeling analyzer_client 172.17.0.2:50005", stdin=entrada, stdout=salida, shell=True)
         salida.close()
     return 0
