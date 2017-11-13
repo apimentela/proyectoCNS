@@ -31,7 +31,7 @@ def main(args):
                 line = line.replace(" Z "," " + etiqueta + " ")
                 S_texto_etiquetado_completo[index] = ""+line+"\n"
 
-    salida = open("pruebaEtiquetas.flg", "w",encoding="utf-8") #No sirve usar with open, cuando queremos escribir archivos que no existen. Por eso lo hago así. (Windows...)
+    salida = open("resultadoPost.flg", "a+",encoding="utf-8") #No sirve usar with open, cuando queremos escribir archivos que no existen. Por eso lo hago así. (Windows...)
     for line in S_texto_etiquetado_completo:
         salida.write(line)
     salida.close()
