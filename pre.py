@@ -145,7 +145,7 @@ def main(args):
 	salida.write(s_texto)
 	salida.close()
 
-	print(s_texto)
+	#~ print(s_texto)
 	return 0
 
 
