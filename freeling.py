@@ -21,9 +21,9 @@ def main(args):
     return 0
 
 if __name__ == '__main__':
-	"""
-	Se debe ejecutar el código con un elemento de entrada:
-		- el nombre de el archivo que se va a atrabajar
-	"""
-	import sys
-	sys.exit(main(sys.argv))
+    """
+    Se debe ejecutar el código con un elemento de entrada:
+        - el nombre de el archivo que se va a atrabajar
+    """
+    import sys
+    sys.exit(main(sys.argv))
