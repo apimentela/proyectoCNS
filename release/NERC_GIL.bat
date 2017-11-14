@@ -2,7 +2,7 @@
 echo "%1"
 echo "Corriendo pre.py con texto %1"
 python pre.py "%1"
-echo "Corriendo freeling.py"
+echo "Corriendo no_server.py"
 python freeling.py resultadoPre.flg
 echo "Corriendo post.py"
 python post.py resultadoFreeling.flg
