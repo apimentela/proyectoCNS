@@ -3,6 +3,7 @@
 n=open
 M=enumerate
 import re
+import os
 import pickle
 I=pickle.load
 def l(args):
@@ -32,15 +33,7 @@ def l(args):
  os.remove("resultadoPre.flg")
  os.remove("resultadoFreeling.flg")
  return 0
-"""
-        if len(S_tags) == 4: #cuando no mide 4, es que algo pasó con freeling. El chiste es que no tiene etiqueta, o forma, o algo importante.
-            s_token_tag = S_tags[0] +"/"+ S_tags[2] #el 1er elemento es la palabra, y el 3er elemento el tag. Los unimos con una diagonal
-            S_texto_etiquetado_token_tag.append(s_token_tag)
-    salida = open("textoEtiquetado.txt", "w",encoding="utf-8") #No sirve usar with open, cuando queremos escribir archivos que no existen. Por eso lo hago así. (Windows...)
-    for word in S_texto_etiquetado_token_tag:
-        salida.write(word + " ")#Escribimos la palabra/tag seguido de un espacio.
-    salida.close()
-"""
+
 if __name__=='__main__':
  import sys
  sys.exit(l(sys.argv))
