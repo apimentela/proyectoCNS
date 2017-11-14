@@ -139,7 +139,7 @@ def main(args):
     Patrón de sitios web
     """
     expresion_url = re.compile(r"http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+")
-    s_texto=expresion_url.sub(ne00l00,s_texto)
+    s_texto=expresion_url.sub(ne00w00,s_texto)
     #~ resultados_url = expresion_url.finditer(s_texto)
     #~ for resultado in resultados_url:
         #~ print(resultado.group(0))
