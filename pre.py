@@ -4,6 +4,7 @@
 import re
 import pickle
 from tags import *
+from diccionarios import *
 
 def main(args):
     """
@@ -49,6 +50,24 @@ def main(args):
     """
     Aquí comienzan los patrones de verdad
     """
+
+    """
+    Nombres
+    """
+    expresion_nombres=re.compile(r"(("+nombres+" *)+("+apellidos+" *)*|("+apellidos+" *)+)")
+    s_texto=expresion_nombres.sub(ne00p00,s_texto)
+
+    """
+    Ciudades
+    """
+    expresion_ciudades=re.compile(r"(?<!\b[Ee]l )"+ciudades)
+    s_texto=expresion_ciudades.sub(ne00c00,s_texto)
+    
+    """
+    Servicios
+    """
+    expresion_servicios=re.compile(servicios)
+    s_texto=expresion_servicios.sub(ne00s00,s_texto)
 
     """
     Patrones para lugares encontrados con "en"
