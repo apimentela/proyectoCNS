@@ -15,8 +15,8 @@ def main(args):
     s_nombre_archivo = args[1]
     with open(s_nombre_archivo,"r",encoding="utf-8") as entrada:
         S_texto_etiquetado_completo = entrada.readlines() #leemos las líneas del archivo etiquetado de freeling
-    with open("lista_correos.pkl","rb") as f:
-        lista_correos=pickle.load(f)
+    with open("lista_correos.pkl","rb") as pickle_file:
+        lista_correos=pickle.load(pickle_file)
 
     for index, line in enumerate(S_texto_etiquetado_completo):
         line = line.strip()

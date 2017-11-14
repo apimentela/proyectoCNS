@@ -11,8 +11,8 @@ def l(args):
  x=args[1]
  with n(x,"r",encoding="utf-8")as entrada:
   f=entrada.readlines()
- with n("lista_correos.pkl","rb")as f:
-  j=I(f)
+ with n("lista_correos.pkl","rb")as pkl:
+  j=I(pkl)
  for O,k in M(f):
   k=k.strip()
   for b in i:
