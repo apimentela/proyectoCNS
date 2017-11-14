@@ -31,12 +31,16 @@ def main(args):
                 line = line.replace(" Z "," " + etiqueta + " ")
                 S_texto_etiquetado_completo[index] = ""+line+"\n"
 
-    salida = open("resultadoPost.flg", "a+",encoding="utf-8") #No sirve usar with open, cuando queremos escribir archivos que no existen. Por eso lo hago así. (Windows...)
+    salida = open("resultado.flg", "a+",encoding="utf-8") #No sirve usar with open, cuando queremos escribir archivos que no existen. Por eso lo hago así. (Windows...)
     for line in S_texto_etiquetado_completo:
         salida.write(line)
     salida.close()
-
+    
+    os.remove("lista_correos.pkl")
+    os.remove("resultadoPre.flg")
+    os.remove("resultadoFreeling.flg")
     return 0
+
 """
         if len(S_tags) == 4: #cuando no mide 4, es que algo pasó con freeling. El chiste es que no tiene etiqueta, o forma, o algo importante.
             s_token_tag = S_tags[0] +"/"+ S_tags[2] #el 1er elemento es la palabra, y el 3er elemento el tag. Los unimos con una diagonal
@@ -47,6 +51,7 @@ def main(args):
         salida.write(word + " ")#Escribimos la palabra/tag seguido de un espacio.
     salida.close()
 """
+
 if __name__ == '__main__':
     """
     Se debe ejecutar el código con un elemento de entrada:
