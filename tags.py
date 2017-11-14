@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import re
-listaEtiquetas = ["NE00C00","NE00P00","NE00O00","NE00T00","NE00I00","NE00E00","NE00M00","NE00A00","NE00L00","NE00S00","NE00U00"]
+listaEtiquetas = ["NE00C00","NE00P00","NE00O00","NE00T00","NE00I00","NE00E00","NE00M00","NE00A00","NE00L00","NE00S00","NE00U00","NE00W00"]
 
 def ne00c00(matchobj):
     for etiqueta in listaEtiquetas:
@@ -74,13 +74,13 @@ def ne00a00(matchobj):
     texto_nuevo = " "+"NE00A00_"+texto_nuevo+" "
     return texto_nuevo
     
-def ne00l00(matchobj):
+def ne00w00(matchobj):
     for etiqueta in listaEtiquetas:
         if etiqueta in matchobj.group(0):
             return matchobj.group(0)
     texto_encontrado = matchobj.group(0).strip()
     texto_nuevo = texto_encontrado.replace(" ","_")
-    texto_nuevo = " "+"NE00L00_"+texto_nuevo+" "
+    texto_nuevo = " "+"NE00W00_"+texto_nuevo+" "
     return texto_nuevo
     
 def ne00s00(matchobj):
