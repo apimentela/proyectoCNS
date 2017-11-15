@@ -34,7 +34,6 @@ def main(args):
     """
     Aquí comienzan los patrones de verdad
     """
-    stop_list_mayusculas=["Administrar","By","Facebook","JjAa*"]
 
     """
     Patrones para lugares encontrados con "en"
