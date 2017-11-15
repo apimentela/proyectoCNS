@@ -117,18 +117,18 @@ def main(args):
     """
     # TODO: Muchos nombres parecen traer un inicio de conversación al final que comienza con mayúsculas, la mayoría parece ser una palabra funcional.
     expresion_diccionarios=re.compile(r"(?:(?<=Administrar)|(?<=By)|(?<=Facebook)) *([A-Z][^A-Z \W]+ *)+?(?=([Jj]+[Aa]+)+)|(?:(?<=Administrar)|(?<=By)|(?<=Facebook)) *([A-Z][^A-Z \W]+ *)+|([A-Z][^A-Z \W]+ *)+?(?=([Jj]+[Aa]+)+)|([A-Z][^A-Z \W]+ *)+")
-    resultados_diccionarios=expresion_diccionarios.finditer(s_texto)
-    for resultado in resultados_diccionarios:
-        print(resultado.group(0))
+    #~ resultados_diccionarios=expresion_diccionarios.finditer(s_texto)
+    #~ for resultado in resultados_diccionarios:
+        #~ print(resultado.group(0))
 
     """
     Salida
     """
-    salida = open("resultadoPre.flg","a+",encoding="utf-8")
+    salida = open(s_nombre_archivo+"_resultadoPre.flg","w",encoding="utf-8")
     salida.write(s_texto)
     salida.close()
 
-    with open("diccionarioEtiquetas.pkl","wb") as pickle_dump:
+    with open(s_nombre_archivo+"_diccionarioEtiquetas.pkl","wb") as pickle_dump:
         pickle.dump(diccionarioEtiquetas,pickle_dump)
     return 0
 
