@@ -29,45 +29,12 @@ def main(args):
     s_nombre_archivo=args[1]
     with open(s_nombre_archivo,"r",encoding="utf-8") as archivo:
         s_texto_original=archivo.read()
-
-    #~ """
-    #~ Aquí pongo unas cuantas expresiones regulares para quitar símbolos que estén separando:
-        #~ siglas, números, direcciones web o cualquier otra cosa,
-        #~ para que sea más fácil hacer pruebas sin tener que tomar eso en cuenta,
-        #~ esa medida es MOMENTANEA, más adelante hay que trabajar en las expresiones con todo detalle
-        #~ y quitar las de este bloque, porque estas modifican el texto original
-        #~ y es preferible no hacer eso al final
-    #~ """
-    #~ expresion_derecha=re.compile(r"([^\w\s][^A-ZÁÉÍÓÚÑ\d])")         # La expresión está separada en dos partes, una para cada lado de los signos de puntuación
-    #~ expresion_izquierda=re.compile(r"([^A-ZÁÉÍÓÚÑ\d][^\w\s])")       # la primera para el lado derecho, y esta para el lado izquierdo
-    #~ s_texto=expresion_derecha.sub(r" \1",s_texto_original)           # se reemplaza, según el lado, por espacio
-    #~ s_texto=expresion_izquierda.sub(r"\1 ",s_texto)                  # para que todo lo que no está entre mayúsculas o números se separe entre espacios y sea más fácil de tratar
-    #~ s_texto=expresion_derecha.sub(r" \1",s_texto)                    # esto se hace dos veces, por si el segundo afectó el texto de modo que se limpie por completo.
-    #~ expresion_media=re.compile(r"(?<! )[^\w\s](?! )")                # esta expresión buscará todos los símbolos que no fueron separados con espacios
-    #~ s_texto=expresion_media.sub("",s_texto)                          # para eliminarlos y que el texto quede como si las entidades que separaban fueran una sola.
     s_texto=s_texto_original
 
     """
     Aquí comienzan los patrones de verdad
     """
-
-    """
-    Nombres
-    """
-    expresion_nombres=re.compile(r"(("+nombres+" *)+("+apellidos+" *)*|("+apellidos+" *)+)")
-    s_texto=expresion_nombres.sub(ne00p00,s_texto)
-
-    """
-    Ciudades
-    """
-    expresion_ciudades=re.compile(r"(?<!\b[Ee]l )"+ciudades)
-    s_texto=expresion_ciudades.sub(ne00c00,s_texto)
-    
-    """
-    Servicios
-    """
-    expresion_servicios=re.compile(servicios)
-    s_texto=expresion_servicios.sub(ne00s00,s_texto)
+    stop_list_mayusculas=["Administrar","By","Facebook","JjAa*"]
 
     """
     Patrones para lugares encontrados con "en"
@@ -90,20 +57,21 @@ def main(args):
         #~ print(resultado.group(0))
 
     """
+    Servicios
+    """
+    expresion_servicios=re.compile(re_servicios)
+    resultados_servicios=expresion_servicios.finditer(s_texto)
+    s_texto=expresion_servicios.sub(ne00s00,s_texto)
+
+    """
     Patrones para lugares encontrados con "entre"
     """
     expresion_entre=re.compile(r"("+verbo_estar+"|"+verbo_estar_perfecto+")"+" +entre +[\w ]+")
-    #~ resultados_entre=expresion_entre.finditer(s_texto)
-    #~ for resultado in resultados_entre:
-        #~ print(resultado.group(0))
 
     """
     Patrones para lugares encontrados con "cerca/lejos"
     """
     expresion_cerca_lejos=re.compile(r"("+verbo_estar+"|"+verbo_estar_perfecto+")"+" +(cerca|lejos) +de +[\w ]+")
-    #~ resultados_cerca_lejos=expresion_cerca_lejos.finditer(s_texto)
-    #~ for resultado in resultados_cerca_lejos:
-        #~ print(resultado.group(0))
 
     """
     Patrón para placas.
@@ -117,9 +85,6 @@ def main(args):
     placas_7=r"[0-9]-?[A-HJ-NPR-Z]-?[0-9]-?[A-HJ-NPR-Z]{3}"
     expresion_placas = re.compile(r"\b("+placas_1+"|"+placas_2+"|"+placas_3+"|"+placas_4+"|"+placas_5+"|"+placas_6+"|"+placas_7+")\b")
     s_texto=expresion_placas.sub(ne00m00,s_texto)
-    #~ resultados_placas=expresion_placas.finditer(s_texto)
-    #~ for resultado in resultados_placas:
-        #~ print(resultado.group(0))
 
     """
     Patrón para correo electrónico
@@ -128,12 +93,6 @@ def main(args):
     #https://stackoverflow.com/questions/201323/using-a-regular-expression-to-validate-an-email-address
     #Me pareció una buena explicación. Tiene hasta el autómata con el que generaron la expresión.
     expresion_correo = re.compile(r"(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|" + r'"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9]))\.){3}(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9])|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])')
-    resultados_correo=expresion_correo.finditer(s_texto)
-    lista_correos=[]
-    for resultado in resultados_correo:
-        lista_correos.append(resultado.group(0))
-    with open("lista_correos.pkl","wb") as f:
-        pickle.dump(lista_correos,f)
     s_texto=expresion_correo.sub(ne00e00,s_texto)
 
     """
@@ -141,27 +100,27 @@ def main(args):
     """
     expresion_IPv4 = re.compile(r"^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$", re.M)
     s_texto=expresion_IPv4.sub(ne00i00,s_texto)
-    #~ resultados_IPv4 = expresion_IPv4.finditer(s_texto)
-    #~ for resultado in resultados_IPv4:
-            #~ print(resultado.group(0))
 
     """
     Patrón de números telefónicos
     """
     expresion_telefono = re.compile(r"\b(\d{3}[-\.\s]??\d{3}[-\.\s]??\d{4}|\(\d{3}\)\s*\d{3}[-\.\s]??\d{4}|\d{3}[-\.\s]??\d{4})\b")
     s_texto=expresion_telefono.sub(ne00t00,s_texto)
-    #~ resultados_telefono = expresion_telefono.finditer(s_texto)
-    #~ for resultado in resultados_telefono:
-        #~ print(resultado.group(0))
 
     """
     Patrón de sitios web
     """
-    expresion_url = re.compile(r"http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+")
+    expresion_url = re.compile(r"http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+|(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+\.com(\.[a-z]+)?")
     s_texto=expresion_url.sub(ne00w00,s_texto)
-    #~ resultados_url = expresion_url.finditer(s_texto)
-    #~ for resultado in resultados_url:
-        #~ print(resultado.group(0))
+
+    """
+    Diccionarios
+    """
+    # TODO: Muchos nombres parecen traer un inicio de conversación al final que comienza con mayúsculas, la mayoría parece ser una palabra funcional.
+    expresion_diccionarios=re.compile(r"(?:(?<=Administrar)|(?<=By)|(?<=Facebook)) *([A-Z][^A-Z \W]+ *)+?(?=([Jj]+[Aa]+)+)|(?:(?<=Administrar)|(?<=By)|(?<=Facebook)) *([A-Z][^A-Z \W]+ *)+|([A-Z][^A-Z \W]+ *)+?(?=([Jj]+[Aa]+)+)|([A-Z][^A-Z \W]+ *)+")
+    resultados_diccionarios=expresion_diccionarios.finditer(s_texto)
+    for resultado in resultados_diccionarios:
+        print(resultado.group(0))
 
     """
     Salida
@@ -170,7 +129,8 @@ def main(args):
     salida.write(s_texto)
     salida.close()
 
-    #~ print(s_texto)
+    with open("diccionarioEtiquetas.pkl","wb") as pickle_dump:
+        pickle.dump(diccionarioEtiquetas,pickle_dump)
     return 0
 
 
