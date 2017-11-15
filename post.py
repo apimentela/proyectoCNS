@@ -3,6 +3,7 @@
 
 import re
 import os
+import os.path
 import pickle
 
 def main(args):
@@ -11,24 +12,20 @@ def main(args):
     Busca línea por línea a nuestra etiqueta, si la encuentra, reescribe
     la línea así como la daría freeling.
     '''
-    S_etiquetas = ["NE00C00","NE00P00","NE00O00","NE00T00","NE00I00","NE00E00","NE00M00","NE00A00","NE00L00","NE00S00","NE00U00"]
+    if os.path.isfile("resultado.flg"): os.remove("resultado.flg")
+    S_etiquetas = ["NE00C00","NE00P00","NE00O00","NE00T00","NE00I00","NE00E00","NE00M00","NE00A00","NE00L00","NE00S00","NE00U00","NE00W00"]
     S_texto_etiquetado_token_tag = [] #esta será una lista, donde cada elemento tiene la forma palabra/tag
     s_nombre_archivo = args[1]
     with open(s_nombre_archivo,"r",encoding="utf-8") as entrada:
         S_texto_etiquetado_completo = entrada.readlines() #leemos las líneas del archivo etiquetado de freeling
-    with open("lista_correos.pkl","rb") as pickle_file:
-        lista_correos=pickle.load(pickle_file)
+    with open("diccionarioEtiquetas.pkl","rb") as pickle_file:
+        diccionarioEtiquetas=pickle.load(pickle_file)
 
     for index, line in enumerate(S_texto_etiquetado_completo):
         line = line.strip()
         for etiqueta in S_etiquetas:
-            if etiqueta == "NE00E00" and etiqueta in line:
-                line = line.replace(etiqueta,lista_correos.popleft())
-                line = line.replace(" Z ", " "+ etiqueta + " ")
-                S_texto_etiquetado_completo[index] = ""+line+"\n"
-
             if etiqueta in line:
-                line = line.replace(""+etiqueta+"_","")
+                line = line.replace(etiqueta,diccionarioEtiquetas[etiqueta].pop(0))
                 line = line.replace(" Z "," " + etiqueta + " ")
                 S_texto_etiquetado_completo[index] = ""+line+"\n"
 
@@ -37,7 +34,7 @@ def main(args):
         salida.write(line)
     salida.close()
     
-    os.remove("lista_correos.pkl")
+    os.remove("diccionarioEtiquetas.pkl")
     os.remove("resultadoPre.flg")
     os.remove("resultadoFreeling.flg")
     return 0
