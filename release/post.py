@@ -6,7 +6,7 @@ import re
 import os
 N=os.remove
 D=os.path
-import D
+import os.path
 import pickle
 n=pickle.load
 def G(args):
@@ -45,5 +45,3 @@ def G(args):
 if __name__=='__main__':
  import sys
  sys.exit(G(sys.argv))
-# Created by pyminifier (https://github.com/liftoff/pyminifier)
-
