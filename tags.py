@@ -126,7 +126,12 @@ def ne00u00(matchobj):
 #### DICCIONARIOS ####
 
 def ne00c01(texto):
-    if re_ciudades.search(texto): return True
+	m_ciudad=re_ciudades.search(texto)
+    if m_ciudad:
+		texto_nuevo=m_ciudad.group(0).replace(" ","_")
+		diccionarioEtiquetas["NE00C01"].append(texto_nuevo)
+		return True
+	return False
 
 def diccionarios(matchobj):
 	"""
