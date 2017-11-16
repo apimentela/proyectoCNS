@@ -4,7 +4,7 @@
 import re
 import pickle
 from tags import *
-from diccionarios import *
+from diccionarios import re_servicios
 
 def main(args):
     """
@@ -117,6 +117,7 @@ def main(args):
     """
     # TODO: Muchos nombres parecen traer un inicio de conversación al final que comienza con mayúsculas, la mayoría parece ser una palabra funcional.
     expresion_diccionarios=re.compile(r"(?:(?<=Administrar)|(?<=By)|(?<=Facebook)) *([A-Z][^A-Z \W]+ *)+?(?=([Jj]+[Aa]+)+)|(?:(?<=Administrar)|(?<=By)|(?<=Facebook)) *([A-Z][^A-Z \W]+ *)+|([A-Z][^A-Z \W]+ *)+?(?=([Jj]+[Aa]+)+)|([A-Z][^A-Z \W]+ *)+")
+    s_texto=expresion_diccionarios.sub(diccionarios,s_texto)
     #~ resultados_diccionarios=expresion_diccionarios.finditer(s_texto)
     #~ for resultado in resultados_diccionarios:
         #~ print(resultado.group(0))
