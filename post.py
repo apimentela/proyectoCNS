@@ -4,6 +4,7 @@
 import re
 import os
 import pickle
+from tags import listaEtiquetas
 
 def main(args):
     '''
@@ -11,7 +12,6 @@ def main(args):
     Busca línea por línea a nuestra etiqueta, si la encuentra, reescribe
     la línea así como la daría freeling.
     '''
-    S_etiquetas = ["NE00C00","NE00P00","NE00O00","NE00T00","NE00I00","NE00E00","NE00M00","NE00A00","NE00L00","NE00S00","NE00U00","NE00W00"]
     S_texto_etiquetado_token_tag = [] #esta será una lista, donde cada elemento tiene la forma palabra/tag
     s_nombre_archivo = args[1]
     s_nombre_archivo_salida=args[2]
@@ -22,10 +22,10 @@ def main(args):
 
     for index, line in enumerate(S_texto_etiquetado_completo):
         line = line.strip()
-        for etiqueta in S_etiquetas:
+        for etiqueta in listaEtiquetas:
             if etiqueta in line:
                 line = line.replace(etiqueta,diccionarioEtiquetas[etiqueta].pop(0))
-                line = line.replace(" Z "," " + etiqueta + " ")
+                line = line.replace(" Z "," " + etiqueta[:-1] + "0 ")
                 S_texto_etiquetado_completo[index] = ""+line+"\n"
 
     salida = open(s_nombre_archivo_salida, "w",encoding="utf-8") #No sirve usar with open, cuando queremos escribir archivos que no existen. Por eso lo hago así. (Windows...)

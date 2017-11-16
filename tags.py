@@ -2,8 +2,12 @@
 # -*- coding: utf-8 -*-
 
 import re
-listaEtiquetas = ["NE00C00","NE00P00","NE00O00","NE00T00","NE00I00","NE00E00","NE00M00","NE00A00","NE00L00","NE00S00","NE00U00","NE00W00"]
-diccionarioEtiquetas = {"NE00C00":[],"NE00P00":[],"NE00O00":[],"NE00T00":[],"NE00I00":[],"NE00E00":[],"NE00M00":[],"NE00A00":[],"NE00L00":[],"NE00S00":[],"NE00U00":[],"NE00W00":[]}
+from diccionarios import *
+
+listaEtiquetas = ["NE00C00","NE00P00","NE00O00","NE00T00","NE00I00","NE00E00","NE00M00","NE00A00","NE00L00","NE00S00","NE00U00","NE00W00","NE00C01"]
+diccionarioEtiquetas = {}
+for etiqueta in listaEtiquetas:
+	diccionarioEtiquetas[etiqueta]=[]
 
 def ne00c00(matchobj):
     for etiqueta in listaEtiquetas:
@@ -118,3 +122,16 @@ def ne00u00(matchobj):
     diccionarioEtiquetas["NE00U00"].append(texto_nuevo)
     texto_nuevo = " "+"NE00U00"+" "
     return texto_nuevo
+
+#### DICCIONARIOS ####
+
+def ne00c01(texto):
+    if re_ciudades.search(texto): return True
+
+def diccionarios(matchobj):
+	"""
+	Ciudades
+	"""
+	if ne00c01(matchobj.group(0)) : return " NE00C01 "
+	
+	return matchobj.group(0)
