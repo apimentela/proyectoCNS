@@ -5,6 +5,7 @@ import re
 from diccionarios import *
 
 listaEtiquetas = ["NE00C00","NE00P00","NE00O00","NE00T00","NE00I00","NE00E00","NE00M00","NE00A00","NE00L00","NE00S00","NE00U00","NE00W00","NE00C01","NE00P01"]
+
 diccionarioEtiquetas = {}
 for etiqueta in listaEtiquetas:
     diccionarioEtiquetas[etiqueta]=[]
