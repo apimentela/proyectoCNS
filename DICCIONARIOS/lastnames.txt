@@ -1282,6 +1282,7 @@ Corriveau
 Corriveau
 Corro
 Cortes
+Cortés
 Cortez
 Cos
 Cosa
@@ -3560,12 +3561,12 @@ Piché
 Piché
 Pichette
 Pichette
-Pichon
+Pichón
 Pichon
 Picon
 Piedra
 Pierre
-Pierre
+Piérre
 Pierre
 Pierre
 Pigeon
@@ -3576,6 +3577,7 @@ Pilon
 Pilote
 Pilote
 Piloto
+Pimentel
 Pimienta
 Pinard
 Pinard
