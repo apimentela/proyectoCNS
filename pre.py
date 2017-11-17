@@ -3,8 +3,8 @@
 
 import re
 import pickle
-from tags import *
 from diccionarios import re_servicios
+from tags import *
 
 def main(args):
     """
@@ -58,9 +58,7 @@ def main(args):
     """
     Servicios
     """
-    expresion_servicios=re.compile(re_servicios)
-    resultados_servicios=expresion_servicios.finditer(s_texto)
-    s_texto=expresion_servicios.sub(ne00s00,s_texto)
+    s_texto=re_servicios.sub(ne00s00,s_texto)
 
     """
     Patrones para lugares encontrados con "entre"

@@ -2,7 +2,6 @@
 # -*- coding: utf-8 -*-
 #Archivo para llamar a freeling
 import subprocess
-import re
 
 def main(args):
     """
@@ -16,7 +15,7 @@ def main(args):
     with open(s_nombre_archivo+"_resultadoPre.flg","r",encoding="utf-8") as entrada:
         #no lo metí en otro with open porque daba error. Así que lo dejo así.
         salida = open(s_nombre_archivo+"_resultadoFreeling.flg", "w",encoding="utf-8")
-        subprocess.call("docker run -i --rm freeling analyzer_client 172.17.0.2:50005", stdin=entrada, stdout=salida, shell=True)
+        subprocess.call("C:\\freeling\\bin\\analyzer_client.exe localhost:50005", stdin=entrada, stdout=salida, shell=True)
         salida.close()
     return 0
 

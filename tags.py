@@ -7,7 +7,7 @@ from diccionarios import *
 listaEtiquetas = ["NE00C00","NE00P00","NE00O00","NE00T00","NE00I00","NE00E00","NE00M00","NE00A00","NE00L00","NE00S00","NE00U00","NE00W00","NE00C01"]
 diccionarioEtiquetas = {}
 for etiqueta in listaEtiquetas:
-	diccionarioEtiquetas[etiqueta]=[]
+    diccionarioEtiquetas[etiqueta]=[]
 
 def ne00c00(matchobj):
     for etiqueta in listaEtiquetas:
@@ -126,17 +126,17 @@ def ne00u00(matchobj):
 #### DICCIONARIOS ####
 
 def ne00c01(texto):
-	m_ciudad=re_ciudades.search(texto)
+    m_ciudad=re_ciudades.search(texto)
     if m_ciudad:
-		texto_nuevo=m_ciudad.group(0).replace(" ","_")
-		diccionarioEtiquetas["NE00C01"].append(texto_nuevo)
-		return True
-	return False
+        texto_nuevo=m_ciudad.group(0).replace(" ","_")
+        diccionarioEtiquetas["NE00C01"].append(texto_nuevo)
+        return True
+    return False
 
 def diccionarios(matchobj):
-	"""
-	Ciudades
-	"""
-	if ne00c01(matchobj.group(0)) : return " NE00C01 "
-	
-	return matchobj.group(0)
+    """
+    Ciudades
+    """
+    if ne00c01(matchobj.group(0)) : return " NE00C01 "
+    
+    return matchobj.group(0)
