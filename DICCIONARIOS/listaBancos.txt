@@ -1,0 +1,341 @@
+﻿BANAMEX
+Banco Nacional de México
+S.A.
+Institución de Banca Múltiple
+GrupoFinanciero Banamex
+BANCOMEXT
+Banco Nacional de Comercio Exterior
+Sociedad Nacional de Crédito,Institución de Banca de Desarrollo
+BANOBRAS
+Banco Nacional de Obras y Servicios Públicos
+Sociedad Nacional deCrédito
+Institución de Banca de Desarrollo
+BBVA BANCOMER
+BBVA Bancomer
+S.A.
+Institución de Banca Múltiple
+Grupo Financiero BBVABancomer
+SANTANDER
+Banco Santander
+S.A.
+Institución de Banca Múltiple
+GrupoFinanciero Santander
+BANJERCITO
+Banco Nacional del Ejército
+Fuerza Aérea y Armada
+Sociedad Nacional deCrédito
+Institución de Banca de Desarrollo
+HSBC
+HSBC México
+S.A.
+institución De Banca Múltiple
+Grupo Financiero HSBC
+BANJIO
+Banco del Bajío
+S.A.
+Institución de Banca Múltiple
+IXE
+IXE Banco
+S.A.
+Institución de Banca Múltiple
+IXE Grupo Financiero
+INBURSA
+Banco Inbursa
+S.A.
+Institución de Banca Múltiple
+Grupo Financiero Inbursa
+INTERACCIONES
+Banco Interacciones
+S.A.
+Institución de Banca Múltiple
+MIFEL
+Banca Mifel
+S.A.
+Institución de Banca Múltiple
+Grupo Financiero Mifel
+SCOTIABANK
+Scotiabank Inverlat
+S.A.
+BANREGIO
+Banco Regional de Monterrey
+S.A.
+Institución de Banca Múltiple
+BanregioGrupo Financiero
+INVEX
+Banco Invex
+S.A.
+Institución de Banca Múltiple
+Invex Grupo Financiero
+BANSI
+Bansi
+S.A.
+Institución de Banca Múltiple
+AFIRME
+Banca Afirme
+S.A.
+Institución de Banca Múltiple
+BANORTE
+Banco Mercantil del Norte
+S.A.
+Institución de Banca Múltiple
+GrupoFinanciero Banorte
+THE ROYAL BANK
+The Royal Bank of Scotland México
+S.A.
+Institución de Banca Múltiple
+AMERICAN EXPRESS
+American Express Bank
+S.A.
+Institución de Banca Múltiple
+BAMSA
+Bank of America México
+S.A.
+Institución de Banca Múltiple
+GrupoFinanciero Bank of America
+TOKYO
+Bank of Tokyo-Mitsubishi UFJ
+S.A.
+JP MORGAN
+Banco J.P. Morgan
+S.A.
+Institución de Banca Múltiple
+J.P. Morgan GrupoFinanciero
+BMONEX
+Banco Monex
+S.A.
+Institución de Banca Múltiple
+VE POR MAS
+Banco Ve Por Mas
+S.A. Institución de Banca Múltiple
+ING
+ING Bank
+S.A.
+Institución de Banca Múltiple
+ING GrupoFinanciero
+DEUTSCHE
+Deutsche Bank México
+S.A.
+Institución de Banca Múltiple
+CREDIT SUISSE
+Banco Credit Suisse
+S.A. Institución de Banca Múltiple
+GrupoFinanciero Credit Suisse
+AZTECA
+Banco Azteca
+S.A. Institución de Banca Múltiple.
+AUTOFIN
+Banco Autofin México
+S.A. Institución de Banca Múltiple
+BARCLAYS
+Barclays Bank México
+S.A.
+Institución de Banca Múltiple
+Grupo FinancieroBarclays México
+COMPARTAMOS
+Banco Compartamos
+S.A.
+Institución de Banca Múltiple
+BANCO FAMSA
+Banco Ahorro Famsa
+S.A.
+Institución de Banca Múltiple
+BMULTIVA
+Banco Multiva
+S.A.
+Institución de Banca Múltiple
+Multivalores GrupoFinanciero
+ACTINVER
+Banco Actinver
+S.A. Institución de Banca Múltiple
+Grupo Financiero Actinver
+WAL-MART
+Banco Wal-Mart de México Adelante
+S.A.
+Institución de Banca Múltiple
+NAFIN
+Nacional Financiera
+Sociedad Nacional de Crédito
+Institución de Banca deDesarrollo
+INTERBANCO
+Inter Banco
+S.A. Institución de Banca Múltiple
+BANCOPPEL
+BanCoppel
+S.A.
+Institución de Banca Múltiple
+ABC CAPITAL
+ABC Capital
+S.A.
+Institución de Banca Múltiple
+UBS BANK
+UBS Bank México
+S.A.
+Institución de Banca Múltiple
+UBS Grupo Financiero
+CONSUBANCO
+Consubanco
+S.A. Institución de Banca Múltiple
+VOLSWAGEN
+Volkswagen Bank
+S.A.
+Institución de Banca Múltiple
+CIBANCO
+CIBanco
+S.A.
+BBASE
+Banco Base
+S.A.
+Institución de Banca Múltiple
+BANSEFI
+Banco del Ahorro Nacional y Servicios Financieros
+Sociedad Nacional deCrédito
+Institución de Banca de Desarrollo
+HIPOTECARIA FEDERAL
+Sociedad Hipotecaria Federal
+Sociedad Nacional de Crédito
+Institución de Banca de Desarrollo
+MONEXCB
+SMonex Casa de Bolsa
+S.A. de C.V. Monex Grupo Financiero
+GBM
+GBM Grupo Bursátil Mexicano
+S.A. de C.V. Casa de Bolsa
+MASARI
+Masari Casa de Bolsa
+S.A.
+VALUE
+Value
+S.A. de C.V. Casa de Bolsa
+ESTRUCTURADORES
+Estructuradores del Mercado de Valores Casa de Bolsa
+S.A. de C.V
+TIBER
+Casa de Cambio Tiber
+S.A. de C.V.
+VECTOR
+Vector Casa de Bolsa
+S.A. de C.V.
+B&B
+B y B
+Casa de Cambio
+S.A. de C.V.
+ACCIVAL
+Acciones y Valores Banamex
+S.A. de C.V.
+Casa de Bolsa
+MERRILL LYNCH
+Merrill Lynch México
+S.A. de C.V. Casa de Bolsa
+FINAMEX
+Casa de Bolsa Finamex
+S.A. de C.V.
+VALMEX
+Valores Mexicanos Casa de Bolsa
+S.A. de C.V.
+UNICA
+Unica Casa de Cambio
+S.A. de C.V.
+MAPFRE
+MAPFRE Tepeyac
+S.A.
+PROFUTURO
+Profuturo G.N.P.
+S.A. de C.V.
+Afore
+CB ACTINVER
+Actinver Casa de Bolsa
+S.A. de C.V.
+OACTIN
+OPERADORA ACTINVER
+S.A. DE C.V.
+SKANDIA
+Skandia Vida
+S.A. de C.V
+CBDEUTSCHE
+Deutsche Securities
+S.A. de C.V. CASA DE BOLSA
+ZURICH
+Zurich Compañía de Seguros
+S.A.
+ZURICHVI
+Zurich Vida
+Compañía de Seguros
+S.A.
+SU CASITA
+Hipotecaria Su Casita
+S.A. de C.V. SOFOM ENR
+CB INTERCAM
+Intercam Casa de Bolsa
+S.A. de C.V.
+CI BOLSA
+CI Casa de Bolsa
+S.A. de C.V.
+BULLTICK CB
+Bulltick Casa de Bolsa
+S.A.
+de C.V.
+STERLING
+Sterling Casa de Cambio
+S.A. de C.V.
+FINCOMUN
+Fincomún
+Servicios Financieros Comunitarios
+S.A. de C.V.
+HDI SEGUROS
+HDI Seguros
+S.A. de C.V.
+ORDER
+Order Express Casa de Cambio
+S.A. de C.V
+AKALA
+Akala
+S.A. de C.V.
+Sociedad Financiera Popular
+CB JPMORGAN
+J.P. Morgan Casa de Bolsa
+S.A. de C.V. J.P. Morgan Grupo Financiero
+REFORMA
+Operadora de Recursos Reforma
+S.A. de C.V.
+S.F.P.
+STP
+Sistema de Transferencias y Pagos STP
+S.A. de C.V.SOFOM ENR
+TELECOMM
+Telecomunicaciones de México
+EVERCORE
+Evercore Casa de Bolsa
+S.A. de C.V.
+SKANDIA
+Skandia Operadora de Fondos
+S.A. de C.V.
+SEGMTY
+Seguros Monterrey New York Life
+S.A de C.V
+ASEA
+Solución Asea
+S.A. de C.V.
+Sociedad Financiera Popular
+KUSPIT
+Kuspit Casa de Bolsa
+S.A. de C.V.
+SOFIEXPRESS
+J.P. SOFIEXPRESS
+S.A. de C.V.
+S.F.P.
+UNAGRA
+UNAGRA
+S.A. de C.V.
+S.F.P.
+OPCIONES EMPRESARIALES DEL NOROESTE
+OPCIONES EMPRESARIALES DEL NORESTE
+S.A. DE C.V.
+S.F.P.
+CLS
+ Cls Bank International
+INDEVAL
+SD. Indeval
+S.A. de C.V.
+LIBERTAD
+Libertad Servicios Financieros
+S.A. De C.V.
