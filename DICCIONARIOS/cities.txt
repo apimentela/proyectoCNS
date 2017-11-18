@@ -17184,7 +17184,6 @@ Lituania
 Liverpool
 Llacuanas
 Lla Lata
-Llamadas
 Llanada
 Llanada
 Llanada
@@ -19946,7 +19945,6 @@ Nueva Intenta
 Nueva La Tolda
 Nueva Lucha
 Nueva Lucía
-Nueva
 Nueva Ola
 Nueva Ola
 Nueva Orleans
@@ -19988,7 +19986,6 @@ Nuevo Mundo
 Nuevo Mundo
 Nuevo Mundo
 Nuevo Mundo
-Nuevo
 Nuevo Oriente
 Nuevo Oriente
 Nuevo Paraíso
@@ -58573,10 +58570,6 @@ Livingstone
 Livingston
 Lizarraga
 Llagas
-Llamada
-Llama
-Llamas
-Llamas
 Llanes
 Llanetillos
 Llanitas
