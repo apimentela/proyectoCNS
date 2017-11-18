@@ -116,14 +116,14 @@ def ne00u00(matchobj):
 
 #### DICCIONARIOS ####
 
-s_patrones_mayusculas=r"\b(([A-ZÁÉÍÓÚÑ]+[ \b]+)+|([A-ZÁÉÍÓÚÑ][^A-ZÁÉÍÓÚÑ\W]+[ \b]+([^A-ZÁÉÍÓÚÑ\W\d]+[ \b]+){,2}?)+)"
+s_patrones_mayusculas=r"\b(([A-ZÁÉÍÓÚÑ]+[ \b]+)+|[A-ZÁÉÍÓÚÑ][^A-ZÁÉÍÓÚÑ\W][^\W\d]+[ \b]+(([^A-ZÁÉÍÓÚÑ\W\d]+[ \b]+){,2}[A-ZÁÉÍÓÚÑ][^A-ZÁÉÍÓÚÑ\W][^\W\d]+[ \b]+)+)"
 s_stop_pre=r"(Administrar|By|Facebook)"
 s_stop_post=r"(([Jj]+[Aa]+)+|Inicio)"
 S_stop_contenido=["Ver"]
 #~ expresion_nombres_stop=re.compile(s_stop_pre+" *("+s_patrones_mayusculas+")"+s_stop_post+"|"+s_stop_pre+" *("+s_patrones_mayusculas+")|("+s_patrones_mayusculas+")"+s_stop_post+"|("+s_patrones_mayusculas+")")
-re_nombres_stop_1=re.compile(s_stop_pre+"(.*\w.*)"+s_stop_post)
+re_nombres_stop_1=re.compile(s_stop_pre+"(.*?\w.*?)[\b ]+"+s_stop_post)
 re_nombres_stop_2=re.compile("^"+s_stop_pre+"(.*\w.*)")
-re_nombres_stop_3=re.compile("(.*\w.*)"+s_stop_post+"[\b ]+$")
+re_nombres_stop_3=re.compile("(.*?\w.*?)[\b ]+"+s_stop_post+"[\b ]+")
 
 def ne00p01(texto):
     m_nombre_compuesto=re_nombres_compuestos.search(texto)
@@ -155,21 +155,21 @@ def diccionarios(matchobj):
         if m_nombre_stop_1:
             texto_bueno=m_nombre_stop_1.group(2).strip()
             if texto_bueno in S_stop_contenido: break
-            texto_nuevo=m_nombre_stop_1.group(1)+" NE00P00 "+m_nombre_stop_1.group(3)
+            texto_nuevo=" "+m_nombre_stop_1.group(1)+" NE00P00 "+m_nombre_stop_1.group(3)+" "
             texto_bueno=texto_bueno.replace(" ","_")
             diccionarioEtiquetas["NE00P00"].append(texto_bueno)
             return texto_nuevo
         if m_nombre_stop_2:
             texto_bueno=m_nombre_stop_2.group(2).strip()
             if texto_bueno in S_stop_contenido: break
-            texto_nuevo=m_nombre_stop_2.group(1)+" NE00P00 "
+            texto_nuevo=" "+m_nombre_stop_2.group(1)+" NE00P00 "
             texto_bueno=texto_bueno.replace(" ","_")
             diccionarioEtiquetas["NE00P00"].append(texto_bueno)
             return texto_nuevo
         if m_nombre_stop_3:
             texto_bueno=m_nombre_stop_3.group(1).strip()
             if texto_bueno in S_stop_contenido: break
-            texto_nuevo=" NE00P00 "+m_nombre_stop_3.group(2)
+            texto_nuevo=" NE00P00 "+m_nombre_stop_3.group(2)+" "
             texto_bueno=texto_bueno.replace(" ","_")
             diccionarioEtiquetas["NE00P00"].append(texto_bueno)
             return texto_nuevo

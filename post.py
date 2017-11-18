@@ -4,7 +4,7 @@
 import re
 import os
 import pickle
-from tags import listaEtiquetas
+from tags import listaEtiquetas,S_ciudades
 
 def main(args):
     '''
@@ -27,6 +27,18 @@ def main(args):
                 line = line.replace(etiqueta,diccionarioEtiquetas[etiqueta].pop(0))
                 line = line.replace(" Z "," " + etiqueta[:-1] + "0 ")
                 S_texto_etiquetado_completo[index] = ""+line+"\n"
+        if " NP00000 " in line:
+            entidad=line.split()[0]
+            entidad=entidad.replace("_"," ")
+            if index < len(S_texto_etiquetado_completo)-1 and re.search(" V\w[^P]\w{4} ",S_texto_etiquetado_completo[index+1]):
+                if len(entidad.split()) > 4 or len(entidad) < 4: continue
+                line=line.replace(" NP00000 ", " NE00P00 ")
+                S_texto_etiquetado_completo[index] = ""+line+"\n"
+                continue
+            if entidad in S_ciudades:
+                line=line.replace(" NP00000 ", " NE00C00 ")
+                S_texto_etiquetado_completo[index] = ""+line+"\n"
+                continue
 
     salida = open(s_nombre_archivo_salida, "w",encoding="utf-8") #No sirve usar with open, cuando queremos escribir archivos que no existen. Por eso lo hago así. (Windows...)
     for line in S_texto_etiquetado_completo:
@@ -37,17 +49,6 @@ def main(args):
     os.remove(s_nombre_archivo+"_resultadoPre.flg")
     os.remove(s_nombre_archivo+"_resultadoFreeling.flg")
     return 0
-
-"""
-        if len(S_tags) == 4: #cuando no mide 4, es que algo pasó con freeling. El chiste es que no tiene etiqueta, o forma, o algo importante.
-            s_token_tag = S_tags[0] +"/"+ S_tags[2] #el 1er elemento es la palabra, y el 3er elemento el tag. Los unimos con una diagonal
-            S_texto_etiquetado_token_tag.append(s_token_tag)
-
-    salida = open("textoEtiquetado.txt", "w",encoding="utf-8") #No sirve usar with open, cuando queremos escribir archivos que no existen. Por eso lo hago así. (Windows...)
-    for word in S_texto_etiquetado_token_tag:
-        salida.write(word + " ")#Escribimos la palabra/tag seguido de un espacio.
-    salida.close()
-"""
 
 if __name__ == '__main__':
     """
