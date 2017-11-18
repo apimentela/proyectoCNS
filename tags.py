@@ -126,6 +126,7 @@ re_nombres_stop_2=re.compile("^"+s_stop_pre+"(.*\w.*)")
 re_nombres_stop_3=re.compile("(.*?\w.*?)[\b ]+"+s_stop_post+"[\b ]+")
 
 def ne00p01(texto):
+    if len(texto.split()) > 4 or len(texto) < 4: return False
     m_nombre_compuesto=re_nombres_compuestos.search(texto)
     if m_nombre_compuesto:
         texto=texto.strip()

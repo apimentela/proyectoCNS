@@ -30,7 +30,7 @@ def main(args):
         if " NP00000 " in line:
             entidad=line.split()[0]
             entidad=entidad.replace("_"," ")
-            if index < len(S_texto_etiquetado_completo)-1 and re.search(" V\w[^P]\w{4} ",S_texto_etiquetado_completo[index+1]):
+            if index < len(S_texto_etiquetado_completo)-1 and re.search(" V\w[^IMCG]\w{4} ",S_texto_etiquetado_completo[index+1]):
                 if len(entidad.split()) > 4 or len(entidad) < 4: continue
                 line=line.replace(" NP00000 ", " NE00P00 ")
                 S_texto_etiquetado_completo[index] = ""+line+"\n"

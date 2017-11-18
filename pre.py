@@ -56,7 +56,8 @@ def main(args):
     # TODO : varias entidades que van en mayúsculas y minúsculas si terminan o comienzan con UNA sigla en puras mayúsculas, revisar expresión regular. *revisar que no sea peor el resultado, hay siglas que son seguidas de mayúsculas pero no tienen nada que ver
     # TODO : algunos lugares son seguidos de un lugar más general en paréntesis. (no son tan comúnes)
     en_articulos=articulos_en+r"( +[^A-ZÁÉÍÓÚÑ\W]+ +)*?"    # Se muestran dos patrones principalmente, uno comienza con artículos
-    en_mayusculas=r"(([A-ZÁÉÍÓÚÑ]+[ \b]+)+|([A-ZÁÉÍÓÚÑ][^A-ZÁÉÍÓÚÑ\W]+[ \b]+)+)"        # y otro con mayúsculas
+    #~ en_mayusculas=r"(([A-ZÁÉÍÓÚÑ]+[ \b]+)+|([A-ZÁÉÍÓÚÑ][^A-ZÁÉÍÓÚÑ\W]+[ \b]+)+)"        # y otro con mayúsculas
+    en_mayusculas=s_patrones_mayusculas
     expresion_en=re.compile(r"(?<=\b[Ee]n )+("+en_articulos+en_mayusculas+"|"+en_mayusculas+")")    # esta expresión encuentra todo lo que comienza con en, y le sigue un artículo con alguna mayúscula en algún punto, o puras mayúsculas. A los artículos, se les quitan los "un" y derivados, no parecen dar ningún buen resultado
     s_texto=expresion_en.sub(ne00u00,s_texto)
     #~ resultados_en=expresion_en.finditer(s_texto)
