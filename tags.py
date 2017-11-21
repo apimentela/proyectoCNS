@@ -4,7 +4,7 @@
 import re
 from diccionarios import *
 
-listaEtiquetas = ["NE00C00","NE00P00","NE00O00","NE00T00","NE00I00","NE00E00","NE00M00","NE00A00","NE00L00","NE00S00","NE00U00","NE00W00","NE00C01","NE00P01"]
+listaEtiquetas = ["NE00C00","NE00P00","NE00O00","NE00T00","NE00I00","NE00E00","NE00M00","NE00A00","NE00L00","NE00S00","NE00U00","NE00W00","NE00C01","NE00P01","NE00U01","NE00I01"]
 
 diccionarioEtiquetas = {}
 for etiqueta in listaEtiquetas:
@@ -135,12 +135,30 @@ def ne00p01(texto):
         return True
     return False
 
+def ne00i01(texto):
+    m_institucion=re_instituciones.search(texto)
+    if m_institucion:
+        texto=texto.strip()
+        texto_nuevo=texto.replace(" ","_")
+        diccionarioEtiquetas["NE00I01"].append(texto_nuevo)
+        return True
+    return False
+
 def ne00c01(texto):
     m_ciudad=re_ciudades.search(texto)
     if m_ciudad:
         texto=texto.strip()
         texto_nuevo=texto.replace(" ","_")
         diccionarioEtiquetas["NE00C01"].append(texto_nuevo)
+        return True
+    return False
+
+def ne00u01(texto):
+    m_ubicacion=re_ubicaciones.search(texto)
+    if m_ubicacion:
+        texto=texto.strip()
+        texto_nuevo=texto.replace(" ","_")
+        diccionarioEtiquetas["NE00U01"].append(texto_nuevo)
         return True
     return False
 
@@ -179,6 +197,8 @@ def diccionarios(matchobj):
     Diccionarios
     """
     if ne00p01(matchobj.group(0)) : return " NE00P01 "
+    if ne00i01(matchobj.group(0)) : return " NE00I01 "
+    if ne00u01(matchobj.group(0)) : return " NE00U01 "
     #~ if ne00c01(matchobj.group(0)) : return " NE00C01 "
     
     return matchobj.group(0)
