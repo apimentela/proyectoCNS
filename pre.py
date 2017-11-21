@@ -40,7 +40,7 @@ def main(args):
     """
     # TODO: Muchos nombres parecen traer un inicio de conversación al final que comienza con mayúsculas, la mayoría parece ser una palabra funcional.
     expresion_diccionarios=re.compile(s_patrones_mayusculas)
-    s_texto=expresion_diccionarios.sub(diccionarios,s_texto)
+    s_texto=expresion_diccionarios.sub(diccionarios,s_texto) #FIXME: esta operación parece ser infinita para algunos archivos de entrada, hay que poner un bloqueo por tiempo.
     #~ resultados_diccionarios=expresion_diccionarios.finditer(s_texto)
     #~ for resultado in resultados_diccionarios:
         #~ print(resultado.group(0))
