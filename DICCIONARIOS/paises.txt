@@ -1,0 +1,366 @@
+Abjasia
+Acrotiri y Dhekelia
+Afganistán
+Afghanistan
+Albania
+Alemania
+Algeria
+Andorra
+Angola
+Anguila
+Antigua and Barbuda
+Antigua y Barbuda
+Arabia Saudita
+Argelia
+Argentina
+Armenia
+Aruba
+Ascensión y Tristán de Acuña Santa Elena
+Australia
+Austria
+Azerbaijan
+Azerbaiyán
+Bahamas
+Bahrain
+Bangladés
+Bangladesh
+Barbados
+Baréin
+Belarus
+Bélgica
+Belgium
+Belice
+Belize
+Benin
+Benín
+Bermudas
+Bhutan
+Bielorrusia
+Birmania
+Bolivia
+Bosnia and Herzegovina
+Bosnia y Herzegovina
+Botsuana
+Botswana
+Brasil
+Brazil
+Brunéi
+Brunei 
+Bulgaria
+Burkina Faso
+Burma
+Burundi
+Bután
+Cabo Verde
+Cambodia
+Camboya
+Cameroon
+Camerún
+Canada
+Canadá
+Cape Verde
+Catar
+Central African Republic
+Chad
+Chile
+China
+Chipre
+Chipre del Norte
+Ciudad del Vaticano
+Colombia
+Comoras
+Comoros
+Corea del Norte
+Corea del Sur
+Costa de Marfil
+Costa Rica
+Cote d'Ivoire
+Croacia
+Croatia
+Cuba
+Curacao
+Curazao
+Cyprus
+Czech Republic
+Democratic Republic of the Congo
+Denmark
+Dinamarca
+Djibouti
+Dominica
+Dominican Republic
+East Timor (Timor-Leste)
+Ecuador
+Egipto
+Egypt
+El Salvador
+Emiratos Árabes Unidos
+Equatorial Guinea
+Eritrea
+Eslovaquia
+Eslovenia
+España
+Estados Unidos
+Estonia
+Ethiopia
+Etiopía
+Fiji
+Filipinas
+Finland
+Finlandia
+Fiyi
+France
+Francia
+Gabon
+Gabón
+Gambia
+Georgia
+Germany
+Ghana
+Gibraltar
+Granada
+Grecia
+Greece
+Grenada
+Groenlandia
+Guam
+Guatemala
+Guernsey
+Guinea
+Guinea-Bisáu
+Guinea-Bissau
+Guinea Ecuatorial
+Guyana
+Haiti
+Haití
+Holy See
+Honduras
+Hong Kong
+Hungary
+Hungría
+Iceland
+India
+Indonesia
+Irak
+Iran
+Irán
+Iraq
+Ireland
+Irlanda
+Isla de Man
+Isla de Navidad
+Islandia
+Isla Norfolk
+Islas Caimán
+Islas Cocos
+Islas Cook
+Islas Feroe
+Islas Malvinas
+Islas Marianas del Norte
+Islas Marshall
+Islas Pitcairn
+Islas Salomón
+Islas Turcas y Caicos
+Islas Vírgenes Británicas
+Islas Vírgenes de los Estados Unidos
+Israel
+Italia
+Italy
+Jamaica
+Japón
+Jersey
+Jordania
+Kazajistán
+Kenia
+Kirguistán
+Kiribati
+Kosovo
+Kuwait
+Laos
+Latvia
+Lebanon
+Lesotho
+Lesoto
+Letonia
+Líbano
+Liberia
+Libia
+Libya
+Liechtenstein
+Lithuania
+Lituania
+Luxembourg
+Luxemburgo
+Macao
+Macau
+Macedonia
+Madagascar
+Malasia
+Malaui
+Malawi
+Malaysia
+Maldivas
+Maldives
+Mali
+Malí
+Malta
+Marruecos
+Marshall Islands
+Mauricio
+Mauritania
+Mauritius
+Mexico
+México
+Micronesia
+Moldavia
+Moldova
+Monaco
+Mónaco
+Mongolia
+Montenegro
+Montserrat
+Morocco
+Mozambique
+Nagorno Karabaj
+Namibia
+Nauru
+Nepal
+Netherlands
+Netherlands Antilles
+New Zealand
+Nicaragua
+Niger
+Níger
+Nigeria
+Niue
+North Korea
+Noruega
+Norway
+Nueva Caledonia
+Nueva Rusia
+Nueva Zelanda
+Oman
+Omán
+Osetia del Sur
+Países Bajos
+Pakistan
+Pakistán
+Palaos
+Palau
+Palestina
+Palestinian Territories
+Panama
+Panamá
+Papua New Guinea
+Papúa Nueva Guinea
+Paraguay
+Peru
+Perú
+Philippines
+Poland
+Polinesia Francesa
+Polonia
+Portugal
+Puerto Rico
+Qatar
+Reino Unido
+República Centroafricana
+República Checa
+República del Congo
+República Democrática del Congo
+República Dominicana
+Republic of the Congo
+Romania
+Ruanda
+Rumania
+Rusia
+Russia
+Rwanda
+Sahara Occidental
+Saint Kitts and Nevis
+Saint Lucia
+Saint Vincent and the Grenadines
+Samoa
+Samoa Americana
+Samoa 
+San Bartolomé
+San Cristóbal y Nieves
+San Marino
+San Martín
+San Pedro y Miquelón
+Santa Lucía
+Santo Tomé y Príncipe
+San Vicente y las Granadinas
+Sao Tome and Principe
+Saudi Arabia
+Senegal
+Serbia
+Seychelles
+Sierra Leona
+Sierra Leone
+Singapore
+Singapur
+Sint Maarten
+Siria
+Slovakia
+Slovenia
+Solomon Islands
+Somalia
+Somalilandia
+South Africa
+South Korea
+South Sudan
+Spain 
+Sri Lanka
+Suazilandia
+Sudáfrica
+Sudan
+Sudán
+Sudán del Sur
+Suecia
+Suiza
+Surinam
+Suriname
+Svalbard
+Swaziland 
+Sweden
+Switzerland
+Syria
+Tailandia
+Taiwan
+Taiwán
+Tajikistan
+Tanzania
+Tayikistán
+Thailand 
+Timor-Leste
+Timor Oriental
+Togo
+Tokelau
+Tonga
+Transnistria
+Trinidad and Tobago
+Trinidad y Tobago
+Túnez
+Tunisia
+Turkey
+Turkmenistan
+Turkmenistán
+Turquía
+Tuvalu
+Ucrania
+Uganda
+Ukraine
+United Arab Emirates
+United Kingdom
+Uruguay
+Uzbekistan
+Uzbekistán
+Vanuatu
+Venezuela
+Vietnam
+Wallis y Futuna
+Yemen
+Yibuti
+Zambia
+Zimbabue
+Zimbabwe
