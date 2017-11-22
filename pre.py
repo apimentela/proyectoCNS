@@ -143,13 +143,13 @@ def main(args):
     """
     Patrón de números telefónicos
     """
-    expresion_telefono = re.compile(r"\b(\d{3}[-\.\s]??\d{3}[-\.\s]??\d{4}|\(\d{3}\)\s*\d{3}[-\.\s]??\d{4}|\d{3}[-\.\s]??\d{4})\b")
+    expresion_telefono = re.compile(r"\b(\d{3}[- ]*\d{3}[- ]*\d{4}|\(\d{3}\)\s*\d{3}[- ]*\d{4}|\d{3}[- ]*\d{4})\b")
     s_texto=expresion_telefono.sub(ne00t00,s_texto)
 
     """
     Patrón de sitios web
     """
-    expresion_url = re.compile(r"http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+|(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+\.com(\.[a-z]+)?")
+    expresion_url = re.compile(r"http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+|\w(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+\.com(\.[a-z]+)?")
     s_texto=expresion_url.sub(ne00w00,s_texto)
 
     """

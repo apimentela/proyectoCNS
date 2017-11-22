@@ -76,7 +76,6 @@ Anita
 Ann
 Anne
 Anny
-Anto
 Antonia
 Antonio
 Antuco
@@ -85,7 +84,6 @@ Apolinar
 Ara
 Araceli
 Arbi
-Argentina
 Ari
 Ariel
 Arita
@@ -94,7 +92,6 @@ Armi
 Arsenio
 Asun
 Asunción
-Bar
 Bárbara
 Barbi
 Bart
@@ -620,7 +617,6 @@ Leli
 Lencho
 Leo
 Leonardo
-Les
 Lesly
 Leti
 Leticia
@@ -639,7 +635,6 @@ Livianne
 Llemo
 Llolli
 Lluc
-Lo
 Lola
 Loles
 Loli
@@ -1178,7 +1173,6 @@ Sole
 Soleá
 Soledad
 Solete
-Sus
 Súsan
 Susana
 Susanne
@@ -1323,3 +1317,6 @@ Zami
 ZuZcy
 Zinrix
 Santis
+Miguelito
+June
+Chapo

@@ -122,7 +122,8 @@ re_nombres_stop_3=re.compile("(.*?\w.*?)[\b ]+"+s_stop_post+"[\b ]+")
 
 def ne00p01(texto):
     if len(texto.split()) > 6 or len(texto) < 3: return False
-    m_nombre_compuesto=re_nombres.search(texto)
+    m_nombre_compuesto=re_nombres_compuestos.search(texto)
+    #~ m_nombre_compuesto=re_nombres.search(texto)
     if m_nombre_compuesto:
         texto=texto.strip()
         texto_nuevo=texto.replace(" ","_")
@@ -149,6 +150,7 @@ def ne00c01(texto):
     return False
 
 def ne00u01(texto):
+	#TODO : Si se encuentra un nombre parcial de ciudad puede que sea una ubicación
     m_ubicacion=re_ubicaciones.search(texto)
     if m_ubicacion:
         texto=texto.strip()
@@ -162,6 +164,7 @@ def diccionarios(matchobj):
     Nombres
     """
     texto=matchobj.group(0)
+    if len(texto.split()) > 6 or len(texto) < 3: return matchobj.group(0)
     m_nombre_stop_1=re_nombres_stop_1.search(texto)
     m_nombre_stop_2=re_nombres_stop_2.search(texto)
     m_nombre_stop_3=re_nombres_stop_3.search(texto)
