@@ -3,15 +3,47 @@
 
 import re
 import pickle
+from multiprocessing import Process, Pipe
 from diccionarios import re_servicios
 from tags import *
+
+def proceso_en(s_texto,conn):
+    """
+    Patrones para lugares encontrados con "en"
+    """
+    articulos_en=r"\b(el|la|los|las|lo|al|del)\b"
+    # TODO : al parecer, aún se puede filtrar mucho si se fijan en las palabras funcionales en los extremos de las supuestas ubicaciones, además, hay que buscar cosas parecidas a "la cual, el cual, el que..." que tampoco dan buenos resultados, y se necesita también una lista de idiomas, por cosas como "en Español..." y cosas como "en HD, en PDF, en la televisión,...", y categorías de periódicos. Además de colocaciones como "en buscda de...."
+    # TODO : verificar expresiones de tiempo como "en el siglo.."
+    # TODO : verificar tambián partes del cuerpo "en el pecho.."
+    # TODO : entidades con mayúsculas pueden tener palabras con minúsculas en medio, aunque no he encontrado que haya más de dos, revisar expresión regular.
+    # TODO : hay que analizar lo de las palabras funcional en los extremos de las entidades, muchas veces solo marcan el final, no que no lo sea. (quitar "en" de esas palabras y agregar "leer", y quizá se tenga que revisar verbos en general, palabras como "te" parecen ser terminantes)
+    # TODO : varias entidades que van en mayúsculas y minúsculas si terminan o comienzan con UNA sigla en puras mayúsculas, revisar expresión regular. *revisar que no sea peor el resultado, hay siglas que son seguidas de mayúsculas pero no tienen nada que ver
+    # TODO : algunos lugares son seguidos de un lugar más general en paréntesis. (no son tan comúnes)
+    en_articulos=articulos_en+r"( +[^A-ZÁÉÍÓÚÑ\W]+ +)*?"    # Se muestran dos patrones principalmente, uno comienza con artículos
+    en_mayusculas=s_patrones_mayusculas
+    expresion_en=re.compile(r"(?<=\b[Ee]n )+("+en_articulos+en_mayusculas+"|"+en_mayusculas+")")    # esta expresión encuentra todo lo que comienza con en, y le sigue un artículo con alguna mayúscula en algún punto, o puras mayúsculas. A los artículos, se les quitan los "un" y derivados, no parecen dar ningún buen resultado
+    s_texto=expresion_en.sub(ne00u00,s_texto)
+    conn.send([s_texto,diccionarioEtiquetas])
+    conn.close()
+
+def proceso_diccionarios(s_texto,conn):
+    """
+    Diccionarios
+    """
+    # TODO: Muchos nombres parecen traer un inicio de conversación al final que comienza con mayúsculas, la mayoría parece ser una palabra funcional.
+    expresion_diccionarios=re.compile(s_patrones_mayusculas)
+    s_texto=expresion_diccionarios.sub(diccionarios,s_texto)
+    conn.send([s_texto,diccionarioEtiquetas])
+    conn.close()
+    #~ resultados_diccionarios=expresion_diccionarios.finditer(s_texto)
+    #~ for resultado in resultados_diccionarios:
+        #~ print(resultado.group(0))
 
 def main(args):
     """
     Constantes útiles
     """
     articulos=r"\b(el|la|los|las|un|uno|una|unos|unas|lo|al|del)\b"
-    articulos_en=r"\b(el|la|los|las|lo|al|del)\b"
     adj_posesivos=r"\b(mi|mis|nuestro|nuestros|nuestra|nuestras|tu|tus|vuestro|vuestros|vuestra|vuestras|su|sus)\b"
     adj_posesivos_1era_persona=r"\b(mi|mis|nuestro|nuestros|nuestra|nuestras)\b"
     verbo_estar=r"\b[Ee]st(oy|ás|á|amos|áis|án|aba|abas|aba|ábamos|abais|aban|uve|uviste|uvo|uvimos|uvisteis|uvieron|aré|arás|ará|aremos|aréis|arán|aría|arías|aríamos|arían|é|és|emos|éis|én|uviera|uvieras|uviéramos|uvierais|uvieran|uviese|uvieses|uviese|uviésemos|uvieseis|uviesen|uviere|uvieres|uviere|uviéremos|uviereis|uvieren)\b"
@@ -38,33 +70,32 @@ def main(args):
     """
     Diccionarios
     """
-    # TODO: Muchos nombres parecen traer un inicio de conversación al final que comienza con mayúsculas, la mayoría parece ser una palabra funcional.
-    expresion_diccionarios=re.compile(s_patrones_mayusculas)
-    s_texto=expresion_diccionarios.sub(diccionarios,s_texto) #FIXME: esta operación parece ser infinita para algunos archivos de entrada, hay que poner un bloqueo por tiempo.
-    #~ resultados_diccionarios=expresion_diccionarios.finditer(s_texto)
-    #~ for resultado in resultados_diccionarios:
-        #~ print(resultado.group(0))
+    parent_conn, child_conn = Pipe()
+    proceso=Process(target=proceso_diccionarios, args=(s_texto,child_conn,))
+    proceso.start()
+    s_texto_recv,diccionarioEtiquetas_recv=parent_conn.recv()
+    proceso.join(10)
+    if proceso.is_alive():
+        proceso.terminate()
+    else:
+        s_texto=s_texto_recv
+        for etiqueta in listaEtiquetas:
+                diccionarioEtiquetas[etiqueta]+=diccionarioEtiquetas_recv[etiqueta]
 
     """
-    Patrones para lugares encontrados con "en"
+    Ubicaciones con "en"
     """
-    # TODO : al parecer, aún se puede filtrar mucho si se fijan en las palabras funcionales en los extremos de las supuestas ubicaciones, además, hay que buscar cosas parecidas a "la cual, el cual, el que..." que tampoco dan buenos resultados, y se necesita también una lista de idiomas, por cosas como "en Español..." y cosas como "en HD, en PDF, en la televisión,...", y categorías de periódicos. Además de colocaciones como "en buscda de...."
-    # TODO : verificar expresiones de tiempo como "en el siglo.."
-    # TODO : verificar tambián partes del cuerpo "en el pecho.."
-    # TODO : entidades con mayúsculas pueden tener palabras con minúsculas en medio, aunque no he encontrado que haya más de dos, revisar expresión regular.
-    # TODO : hay que analizar lo de las palabras funcional en los extremos de las entidades, muchas veces solo marcan el final, no que no lo sea. (quitar "en" de esas palabras y agregar "leer", y quizá se tenga que revisar verbos en general, palabras como "te" parecen ser terminantes)
-    # TODO : varias entidades que van en mayúsculas y minúsculas si terminan o comienzan con UNA sigla en puras mayúsculas, revisar expresión regular. *revisar que no sea peor el resultado, hay siglas que son seguidas de mayúsculas pero no tienen nada que ver
-    # TODO : algunos lugares son seguidos de un lugar más general en paréntesis. (no son tan comúnes)
-    en_articulos=articulos_en+r"( +[^A-ZÁÉÍÓÚÑ\W]+ +)*?"    # Se muestran dos patrones principalmente, uno comienza con artículos
-    #~ en_mayusculas=r"(([A-ZÁÉÍÓÚÑ]+[ \b]+)+|([A-ZÁÉÍÓÚÑ][^A-ZÁÉÍÓÚÑ\W]+[ \b]+)+)"        # y otro con mayúsculas
-    en_mayusculas=s_patrones_mayusculas
-    expresion_en=re.compile(r"(?<=\b[Ee]n )+("+en_articulos+en_mayusculas+"|"+en_mayusculas+")")    # esta expresión encuentra todo lo que comienza con en, y le sigue un artículo con alguna mayúscula en algún punto, o puras mayúsculas. A los artículos, se les quitan los "un" y derivados, no parecen dar ningún buen resultado
-    s_texto=expresion_en.sub(ne00u00,s_texto)
-    #~ resultados_en=expresion_en.finditer(s_texto)
-    #~ for resultado in resultados_en:
-        #~ if " que " in resultado.group(0): continue
-        #~ if len(resultado.group(0).split()) > 6 :continue
-        #~ print(resultado.group(0))
+    parent_conn, child_conn = Pipe()
+    proceso=Process(target=proceso_en, args=(s_texto,child_conn,))
+    proceso.start()
+    s_texto_recv,diccionarioEtiquetas_recv=parent_conn.recv()
+    proceso.join(10)
+    if proceso.is_alive():
+        proceso.terminate()
+    else:
+        s_texto=s_texto_recv
+        for etiqueta in listaEtiquetas:
+                diccionarioEtiquetas[etiqueta]+=diccionarioEtiquetas_recv[etiqueta]
 
     """
     Servicios

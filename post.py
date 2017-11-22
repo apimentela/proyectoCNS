@@ -4,7 +4,8 @@
 import re
 import os
 import pickle
-from tags import listaEtiquetas,S_ciudades
+
+from diccionarios import *
 
 def main(args):
     '''
@@ -31,12 +32,29 @@ def main(args):
             entidad=line.split()[0]
             entidad=entidad.replace("_"," ")
             if index < len(S_texto_etiquetado_completo)-1 and re.search(" V\w[IMCG]\w{4} ",S_texto_etiquetado_completo[index+1]):
-                if len(entidad.split()) > 4 or len(entidad) < 4: continue
+                if len(entidad.split()) > 6 or len(entidad) < 3: continue
+                if re.search(s_stop_contenido,entidad): continue
+                line=line.replace(" NP00000 ", " NE00P00 ")
+                S_texto_etiquetado_completo[index] = ""+line+"\n"
+                continue
+            if entidad in S_nombres:
                 line=line.replace(" NP00000 ", " NE00P00 ")
                 S_texto_etiquetado_completo[index] = ""+line+"\n"
                 continue
             if entidad in S_ciudades:
                 line=line.replace(" NP00000 ", " NE00C00 ")
+                S_texto_etiquetado_completo[index] = ""+line+"\n"
+                continue
+            if entidad in S_instituciones:
+                line=line.replace(" NP00000 ", " NE00O00 ")
+                S_texto_etiquetado_completo[index] = ""+line+"\n"
+                continue
+            if entidad in S_ubicaciones:
+                line=line.replace(" NP00000 ", " NE00U00 ")
+                S_texto_etiquetado_completo[index] = ""+line+"\n"
+                continue
+            if entidad in S_servicios:
+                line=line.replace(" NP00000 ", " NE00S00 ")
                 S_texto_etiquetado_completo[index] = ""+line+"\n"
                 continue
 

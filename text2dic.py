@@ -9,6 +9,7 @@ archivo_nombres="DICCIONARIOS/nombres.txt"
 archivo_servicios="DICCIONARIOS/servicios.txt"
 archivo_paises="DICCIONARIOS/paises.txt"
 archivo_metros="DICCIONARIOS/metros.txt"
+archivo_metrobus="DICCIONARIOS/metrobus.txt"
 archivo_organizaciones="DICCIONARIOS/organizaciones.txt"
 archivo_organizaciones_twitter="DICCIONARIOS/organizaciones_twitter.txt"
 
@@ -16,7 +17,7 @@ nombres=[archivo_nombres,archivo_apellinos,archivo_hipocoristicos]
 servicios=[archivo_servicios]
 ciudades=[archivo_ciudades,archivo_paises]
 instituciones=[archivo_bancos,archivo_organizaciones,archivo_organizaciones_twitter]
-ubicaciones=[archivo_metros]
+ubicaciones=[archivo_metros,archivo_metrobus]
 
 S_nombres=[]
 for archivo in nombres:

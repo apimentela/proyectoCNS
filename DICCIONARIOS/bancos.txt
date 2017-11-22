@@ -235,7 +235,7 @@ Banco Espirito Santo
 Banco de Credito
 Banco latinoamericano de comercio exterior
 Banco Sabadell
-Banco del Ahorro Nacional y servicios financieros**
+Banco del Ahorro Nacional y servicios financieros
 Fundación Dónde Banco
 Banco inmobiliario Mexicano
 Banco Bancrea
@@ -250,8 +250,8 @@ Banco Ahorro Famsa
 Barclays Bank México
 Anco Autofin México
 Banco Credit Suisse
-Banco Azteca**
-Banco Monex**
+Banco Azteca
+Banco Monex
 Cibanco
 Investa Bank
 American express bank
@@ -261,15 +261,17 @@ Andorra Banc Agricol Reig
 Banco de Crédito e Inversiones
 Banco Do Brasil
 Banco Español de Crédito
-Banco General, S.A
+Banco General
 Banco Latinoamericano de Exportaciones
-Banco Mercantil C.A.S.A.C.A
-Banco Sabadell, S.A.
-Bank Hapoalim, B.M.
-Bank Leumi Le-Israel, B.M.
+Banco Mercantil
+C.A.S.A.C.A
+Banco Sabadell
+Bank Hapoalim
+Bank Leumi Le-Israel
 Bayersche Hypo-UND Vereinsbank AG
 BNP-Paribas
-Caja de Ahorros de Valencia Castellón y Alicante, Bancaja
+Caja de Ahorros de Valencia Castellón y Alicante
+Bancaja
 Credit Agricole Corporate and Investment Bank
 DEG-Deutsche Investitions
 Dresdner Bank AG
@@ -278,10 +280,12 @@ Eurohypo AG
 Falcon Internacional Bank
 Fortis Bank México
 Helm Bank
-Intesa Sanpaolo S. P. A.
+Intesa Sanpaolo
+S. P. A.
 Japan Bank for International Cooperation Tokyo Japón
 Landesbank Baden-Wurttemberg de Stuttgart
-Mizuho Corporate Bank, LTD
+Mizuho Corporate Bank
+LTD
 Natixis
 N.M. Rothschild & Limited
 Societé Generale Paris

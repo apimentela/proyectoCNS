@@ -14,7 +14,6 @@ Adriana
 Adriano
 Agus
 Agustín
-Al
 Alber
 Alberto
 Ale
@@ -306,7 +305,6 @@ Duli
 Dulia
 Edu
 Eduardo
-El
 Ele
 Elena
 Eleni
@@ -897,6 +895,8 @@ Monse
 Monsi
 Monti
 Montserrat
+Moti
+Moty
 Mumo
 Mundo
 Nachín
@@ -962,6 +962,7 @@ Ortel
 Oscarín
 Osqui
 Osquitar
+Oly
 Pableras
 Pablito
 Pablo
@@ -1185,9 +1186,9 @@ Susi
 Suso
 Susy
 Svetlana
-T
 Ta
 Tacho
+Taky
 Tam
 Tamara
 Tami
@@ -1319,3 +1320,6 @@ Yvette
 Yvi
 Zalo
 Zami
+ZuZcy
+Zinrix
+Santis

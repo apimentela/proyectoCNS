@@ -2992,6 +2992,7 @@ Baye
 Bayo
 Bayron
 Bayulo
+Bazán
 Beacan
 Beagan
 Beaman
@@ -5260,6 +5261,7 @@ Desiderio
 Desire
 Desiree
 Desireé
+Desirée
 Desislav
 Desislava
 Desmond
@@ -7368,7 +7370,6 @@ Fran
 Franc
 Franca
 Francamarina
-France
 Francelina
 Frances
 Francesc
@@ -21747,3 +21748,4 @@ Zviadi
 Zydrunas
 Zygmunt
 Zysli
+Yeshua

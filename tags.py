@@ -2,9 +2,8 @@
 # -*- coding: utf-8 -*-
 
 import re
+from multiprocessing import Pipe
 from diccionarios import *
-
-listaEtiquetas = ["NE00C00","NE00P00","NE00O00","NE00T00","NE00I00","NE00E00","NE00M00","NE00A00","NE00L00","NE00S00","NE00U00","NE00W00","NE00C01","NE00P01","NE00U01","NE00I01"]
 
 diccionarioEtiquetas = {}
 for etiqueta in listaEtiquetas:
@@ -105,7 +104,8 @@ def ne00u00(matchobj):
         if etiqueta in matchobj.group(0):
             return matchobj.group(0)
     texto_encontrado = matchobj.group(0).strip()
-    stop_list=["Messenger", "Twitter", "Facebook", "Internet", "Instagram", "Google", "Skype", "Tumblr", "Pocket", "Telegram", "Pinterest", "Reddit", "Linkedin", "Youtube", "Síguenos", "Inicio"]
+    if len(texto_encontrado.split()) > 6 or len(texto_encontrado) < 4: return matchobj.group(0)
+    stop_list=["Messenger", "Twitter", "Facebook", "Internet", "Instagram", "Google", "Skype", "Tumblr", "Pocket", "Telegram", "Pinterest", "Reddit", "Linkedin", "Youtube", "Síguenos", "Inicio","Español","la cual","el cual","el que","hd","HD","pdf","PDF","la televisión"]
     for stop in stop_list:
         if texto_encontrado.startswith(stop):
             return matchobj.group(0)
@@ -116,18 +116,13 @@ def ne00u00(matchobj):
 
 #### DICCIONARIOS ####
 
-s_patrones_mayusculas=r"\b(([A-ZÁÉÍÓÚÑ]+[ \b]+)+|[A-ZÁÉÍÓÚÑ][^A-ZÁÉÍÓÚÑ\W][^\W\d]+[ \b]+(([^A-ZÁÉÍÓÚÑ\W\d]+[ \b]+){,2}[A-ZÁÉÍÓÚÑ][^A-ZÁÉÍÓÚÑ\W][^\W\d]+[ \b]+)+)"
-s_stop_pre=r"(Administrar|By|Facebook)"
-s_stop_post=r"(([Jj]+[Aa]+)+|Inicio)"
-S_stop_contenido=["Ver"]
-#~ expresion_nombres_stop=re.compile(s_stop_pre+" *("+s_patrones_mayusculas+")"+s_stop_post+"|"+s_stop_pre+" *("+s_patrones_mayusculas+")|("+s_patrones_mayusculas+")"+s_stop_post+"|("+s_patrones_mayusculas+")")
 re_nombres_stop_1=re.compile(s_stop_pre+"(.*?\w.*?)[\b ]+"+s_stop_post)
 re_nombres_stop_2=re.compile("^"+s_stop_pre+"(.*\w.*)")
 re_nombres_stop_3=re.compile("(.*?\w.*?)[\b ]+"+s_stop_post+"[\b ]+")
 
 def ne00p01(texto):
-    if len(texto.split()) > 4 or len(texto) < 4: return False
-    m_nombre_compuesto=re_nombres_compuestos.search(texto)
+    if len(texto.split()) > 6 or len(texto) < 3: return False
+    m_nombre_compuesto=re_nombres.search(texto)
     if m_nombre_compuesto:
         texto=texto.strip()
         texto_nuevo=texto.replace(" ","_")
@@ -135,12 +130,12 @@ def ne00p01(texto):
         return True
     return False
 
-def ne00i01(texto):
+def ne00o01(texto):
     m_institucion=re_instituciones.search(texto)
     if m_institucion:
         texto=texto.strip()
         texto_nuevo=texto.replace(" ","_")
-        diccionarioEtiquetas["NE00I01"].append(texto_nuevo)
+        diccionarioEtiquetas["NE00O01"].append(texto_nuevo)
         return True
     return False
 
@@ -173,21 +168,21 @@ def diccionarios(matchobj):
     while True:
         if m_nombre_stop_1:
             texto_bueno=m_nombre_stop_1.group(2).strip()
-            if texto_bueno in S_stop_contenido: break
+            if re.search(s_stop_contenido,texto_bueno): break
             texto_nuevo=" "+m_nombre_stop_1.group(1)+" NE00P00 "+m_nombre_stop_1.group(3)+" "
             texto_bueno=texto_bueno.replace(" ","_")
             diccionarioEtiquetas["NE00P00"].append(texto_bueno)
             return texto_nuevo
         if m_nombre_stop_2:
             texto_bueno=m_nombre_stop_2.group(2).strip()
-            if texto_bueno in S_stop_contenido: break
+            if re.search(s_stop_contenido,texto_bueno): break
             texto_nuevo=" "+m_nombre_stop_2.group(1)+" NE00P00 "
             texto_bueno=texto_bueno.replace(" ","_")
             diccionarioEtiquetas["NE00P00"].append(texto_bueno)
             return texto_nuevo
         if m_nombre_stop_3:
             texto_bueno=m_nombre_stop_3.group(1).strip()
-            if texto_bueno in S_stop_contenido: break
+            if re.search(s_stop_contenido,texto_bueno): break
             texto_nuevo=" NE00P00 "+m_nombre_stop_3.group(2)+" "
             texto_bueno=texto_bueno.replace(" ","_")
             diccionarioEtiquetas["NE00P00"].append(texto_bueno)
@@ -197,7 +192,7 @@ def diccionarios(matchobj):
     Diccionarios
     """
     if ne00p01(matchobj.group(0)) : return " NE00P01 "
-    if ne00i01(matchobj.group(0)) : return " NE00I01 "
+    if ne00o01(matchobj.group(0)) : return " NE00O01 "
     if ne00u01(matchobj.group(0)) : return " NE00U01 "
     #~ if ne00c01(matchobj.group(0)) : return " NE00C01 "
     

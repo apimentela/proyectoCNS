@@ -26070,7 +26070,6 @@ Compamento
 Companario
 Compañia
 Compañía
-Compartir
 Compás
 Compass
 Compass Lake
@@ -43112,7 +43111,6 @@ Felicity
 Felicity Cove
 Felida
 Felidia
-Felipe
 Felipe Angeles
 Felipe Ángeles
 Felipe Berriozabal
@@ -74902,7 +74900,6 @@ Lugoff
 Luhke
 Luhkeileng
 Luhrig
-Luis
 Luisa
 Luis Acatlán
 Luis B. Sánchez
@@ -85162,7 +85159,6 @@ Navelencia
 Navenchauc
 Navesink
 Navesink Beach
-Navidad
 Navilleton
 Navina
 Navío
@@ -88524,7 +88520,6 @@ Nueva Zelandia
 Nueve de Octubre
 Nueve Palos
 Nueve Piedras
-Nuevo
 Nuevo Acatepec
 Nuevo Agrado
 Nuevo Aguacatilla
