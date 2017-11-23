@@ -122,7 +122,7 @@ def main(args):
     placas_5=r"[A-HJ-NPR-Z]{2}-?[0-9]{2}-?[0-9]{3}"
     placas_6=r"[0-9]-?[A-HJ-NPR-Z]-?[0-9]{2}-?[A-HJ-NPR-Z]{2}"
     placas_7=r"[0-9]-?[A-HJ-NPR-Z]-?[0-9]-?[A-HJ-NPR-Z]{3}"
-    expresion_placas = re.compile(r"\b("+placas_1+"|"+placas_2+"|"+placas_3+"|"+placas_4+"|"+placas_5+"|"+placas_6+"|"+placas_7+")\b")
+    expresion_placas = re.compile(r"\b("+placas_1+"|"+placas_2+"|"+placas_3+"|"+placas_4+"|"+placas_5+"|"+placas_6+"|"+placas_7+r")\b")
     s_texto=expresion_placas.sub(ne00m00,s_texto)
 
     """
